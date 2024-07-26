@@ -1,7 +1,7 @@
 # NWU CMPG 311 assignment
 
 ## Script Execution Order
-1. cealnup.sql
+1. cleanup.sql
 2. create_sequences.sql
 3. create_tables.sql
 4. create_indexes.sql
