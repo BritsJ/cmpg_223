@@ -37,9 +37,9 @@ AND (c.Contact_Person_Name = 'Alice Johnson' OR c.Business_Name = 'Smith Enterpr
 
 ---------------------------------------------------- 
 --Get Client Details by phone number
---Test Value: 1234567891
+--Test Value: 123-456-7893
 ----------------------------------------------------
-DECLARE @phoneNumber NVARCHAR(15) = '1234567891';
+DECLARE @phoneNumber VARCHAR(15) = '123-456-7893';
 
 SELECT 
     c.contact_person_name AS [Client], 
@@ -54,7 +54,7 @@ WHERE c.phone_number LIKE '%' + @phoneNumber + '%';
 --Get all active subcategory of a category
 --Test Value: ELEC
 ----------------------------------------------------
-DECLARE @cat NVARCHAR(10) = 'ELEC';
+DECLARE @cat VARCHAR(10) = 'ELEC';
 
 SELECT 
     c.category_code,
@@ -70,7 +70,7 @@ WHERE c.category_code = @cat;
 --Get the total of each sale By Employee
 --Test Value: Davis
 ----------------------------------------------------
-DECLARE @last_name NVARCHAR(50) = 'Davis';
+DECLARE @last_name VARCHAR(50) = 'Davis';
 
 SELECT 
     e.last_name + ', ' + e.first_name AS [Employee], 
@@ -120,7 +120,7 @@ GROUP BY
 --Retrievers number of sale where average spend is below a value provided
 --Test Value: 500
 ----------------------------------------------------
-DECLARE @value DECIMAL(10, 2) = 500;
+DECLARE @value MONEY = 500;
 
 SELECT 
     s.sale_date_time AS [Sale Date], 
