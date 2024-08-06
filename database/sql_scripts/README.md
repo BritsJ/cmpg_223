@@ -1,4 +1,4 @@
-# NWU CMPG 311 assignment
+# NWU CMPG 223 assignment
 
 ## Script Execution Order
 1. cleanup.sql
