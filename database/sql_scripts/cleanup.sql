@@ -1,3 +1,6 @@
+-- Ensure you're using the correct database
+USE Test;
+
 ---------------------------------------------------- 
 --Drop Views--
 --Drop all views
@@ -42,10 +45,10 @@ DROP SEQUENCE Job_Equipment_Id_seq;
 --Drop Indexes
 --Drops all created Indexes. 
 ----------------------------------------------------
-DROP INDEX idx_Emp_Last_Name;
-DROP INDEX idx_Equipment_Name;
-DROP INDEX idx_Job_Client;
-DROP INDEX idx_Job_Equipment_fk;
-DROP INDEX idx_Sale_Employee;
-DROP INDEX idx_Sale_Item_Sale_fk;
-DROP INDEX idx_Stock_Name;
+DROP INDEX idx_Emp_Last_Name ON EMPLOYEE;
+DROP INDEX idx_Equipment_Name ON EQUIPMENT;
+DROP INDEX idx_Job_Client ON JOB;
+DROP INDEX idx_Job_Equipment_fk ON JOB_EQUIPMENT;
+DROP INDEX idx_Sale_Employee ON SALE;
+DROP INDEX idx_Sale_Item_Sale_fk ON SALE_ITEM;
+DROP INDEX idx_Stock_Name ON STOCK;
