@@ -7,8 +7,8 @@ USE Test;
 CREATE TABLE dbo.CATEGORY 
 ( 
     Category_Id INT PRIMARY KEY, 
-    Category_Code VARCHAR(20) NOT NULL, 
-    Category_Name VARCHAR(255) NOT NULL, 
+    Category_Code VARCHAR(10) NOT NULL, 
+    Category_Name VARCHAR(25) NOT NULL, 
     Category_Description VARCHAR(255) NOT NULL, 
     Is_Active BIT DEFAULT 1 NOT NULL,
     CONSTRAINT Category_Code_uk UNIQUE (Category_Code)
@@ -19,8 +19,8 @@ CREATE TABLE dbo.SUBCATEGORY
 (
     Subcategory_Id INT PRIMARY KEY, 
     Category_Id INT, 
-    Subcategory_Code VARCHAR(20) NOT NULL, 
-    Subcategory_Name VARCHAR(255) NOT NULL, 
+    Subcategory_Code VARCHAR(10) NOT NULL, 
+    Subcategory_Name VARCHAR(25) NOT NULL, 
     Subcategory_Description VARCHAR(255) NOT NULL, 
     Is_Active BIT DEFAULT 1 NOT NULL,
     CONSTRAINT Cat_Subcat_fk FOREIGN KEY (Category_Id) REFERENCES dbo.CATEGORY(Category_Id),
@@ -32,12 +32,12 @@ CREATE TABLE dbo.STOCK
 (
     Stock_Id INT PRIMARY KEY, 
     Subcategory_Id INT, 
-    Stock_Code VARCHAR(20) NOT NULL, 
-    Stock_Name VARCHAR(255) NOT NULL, 
+    Stock_Code VARCHAR(10) NOT NULL, 
+    Stock_Name VARCHAR(25) NOT NULL, 
     Stock_Description VARCHAR(255) NOT NULL, 
-    Purchase_Date DATE NOT NULL, 
-    Purchase_Price DECIMAL(18, 9) NOT NULL, 
-    Selling_Price DECIMAL(18, 9) NOT NULL, 
+    Purchase_Date DATETIME NOT NULL, 
+    Purchase_Price MONEY NOT NULL, 
+    Selling_Price MONEY NOT NULL, 
     Quantity INT NOT NULL, 
     CONSTRAINT Sub_Stock_fk FOREIGN KEY (Subcategory_Id) REFERENCES dbo.SUBCATEGORY(Subcategory_Id),
     CONSTRAINT Stock_Code_uk UNIQUE (Stock_Code),
@@ -49,13 +49,13 @@ CREATE TABLE dbo.STOCK
 CREATE TABLE dbo.EMPLOYEE
 (
     Employee_Number INT PRIMARY KEY, 
-    Id_Number BIGINT NOT NULL UNIQUE, 
-    First_Name VARCHAR(30) NOT NULL, 
-    Middle_Name VARCHAR(30) NULL,
-    Last_Name VARCHAR(30) NOT NULL, 
-    Hire_Date DATE NOT NULL, 
-    Phone_Number BIGINT NOT NULL, 
-    Email_Address VARCHAR(100) NOT NULL, 
+    Id_Number VARCHAR(25) NOT NULL UNIQUE, 
+    First_Name VARCHAR(25) NOT NULL, 
+    Middle_Name VARCHAR(25) NULL,
+    Last_Name VARCHAR(25) NOT NULL, 
+    Hire_Date DATETIME NOT NULL, 
+    Phone_Number VARCHAR(15) NOT NULL, 
+    Email_Address VARCHAR(255) NOT NULL, 
     Physical_Address VARCHAR(255) NOT NULL, 
     CONSTRAINT Id_Number_uk UNIQUE (Id_Number)
 );
@@ -65,8 +65,8 @@ CREATE TABLE dbo.SALE
 (
     Sale_Id INT PRIMARY KEY, 
     Employee_Number INT, 
-    Sale_Date_Time DATE NOT NULL, 
-    Cash_Received DECIMAL(18, 9) NOT NULL, 
+    Sale_Date_Time DATETIME NOT NULL, 
+    Cash_Received MONEY NOT NULL, 
     CONSTRAINT Sale_Emp_fk FOREIGN KEY (Employee_Number) REFERENCES dbo.EMPLOYEE(Employee_Number),
     CONSTRAINT Sale_Cash_Received_min CHECK (Cash_Received >= 0)
 );
@@ -78,7 +78,7 @@ CREATE TABLE dbo.SALE_ITEM
     Stock_Id INT, 
     Sale_Id INT, 
     Quantity INT NOT NULL, 
-    Price DECIMAL(18, 9) NOT NULL, 
+    Price MONEY NOT NULL, 
     CONSTRAINT Stock_Sale_Item_fk FOREIGN KEY (Stock_Id) REFERENCES dbo.STOCK(Stock_Id),
     CONSTRAINT Sale_Sale_Item_fk FOREIGN KEY (Sale_Id) REFERENCES dbo.SALE(Sale_Id),
     CONSTRAINT Sale_Item_Quantity_min CHECK (Quantity >= 0),
@@ -89,13 +89,13 @@ CREATE TABLE dbo.SALE_ITEM
 CREATE TABLE dbo.CLIENT
 (
     Client_Id INT PRIMARY KEY, 
-    Client_Code VARCHAR(20) NOT NULL, 
-    Contact_Person_Name VARCHAR(30) NOT NULL, 
-    Business_Name VARCHAR(30) NULL,
-    Phone_Number BIGINT NOT NULL, 
-    Email_Address VARCHAR(100) NOT NULL, 
+    Client_Code INT NOT NULL, 
+    Contact_Person_Name VARCHAR(35) NOT NULL, 
+    Business_Name VARCHAR(35) NOT NULL,
+    Phone_Number VARCHAR(15) NOT NULL, 
+    Email_Address VARCHAR(255) NOT NULL, 
     Physical_Address VARCHAR(255) NOT NULL, 
-    Additional_Info VARCHAR(512) NOT NULL,
+    Additional_Info VARCHAR(255) NOT NULL,
     Is_Active BIT DEFAULT 1 NOT NULL, 
     CONSTRAINT Client_Code_uk UNIQUE (Client_Code)
 );
@@ -104,8 +104,8 @@ CREATE TABLE dbo.CLIENT
 CREATE TABLE dbo.EQUIPMENT
 (
     Equipment_Id INT PRIMARY KEY, 
-    Equipment_Code VARCHAR(20) NOT NULL, 
-    Name VARCHAR(255) NOT NULL, 
+    Equipment_Code INT NOT NULL, 
+    Name VARCHAR(35) NOT NULL, 
     Description VARCHAR(255) NOT NULL, 
     Quantity INT NOT NULL, 
     Quantity_Checked_Out INT NOT NULL, 
@@ -120,8 +120,8 @@ CREATE TABLE dbo.JOB
     Job_Id INT PRIMARY KEY, 
     Employee_Number INT, 
     Client_Id INT, 
-    Start_Date_Time DATE NOT NULL, 
-    End_Date_Time DATE NULL, 
+    Start_Date_Time DATETIME NOT NULL, 
+    End_Date_Time DATETIME NULL, 
     Job_Description VARCHAR(255) NOT NULL, 
     CONSTRAINT Employee_Job_fk FOREIGN KEY (Employee_Number) REFERENCES dbo.EMPLOYEE(Employee_Number),
     CONSTRAINT Client_Job_fk FOREIGN KEY (Client_Id) REFERENCES dbo.CLIENT(Client_Id)

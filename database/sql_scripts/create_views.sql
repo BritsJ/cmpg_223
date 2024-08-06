@@ -1,5 +1,6 @@
 -- Ensure you're using the correct database
 USE Test;
+GO
 
 ---------------------------------------------------- 
 -- Employee_Sales_View
