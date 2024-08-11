@@ -16,5 +16,15 @@ namespace CMPG223_Project
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maintainanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
