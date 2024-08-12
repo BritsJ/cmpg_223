@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CMPG223_Project
 {
-    public partial class Mainform : Form
+    public partial class rptSales : Form
     {
-        public Mainform()
+        public rptSales()
         {
             InitializeComponent();
         }

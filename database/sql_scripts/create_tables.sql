@@ -98,7 +98,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[CLIENT](
 	[Client_Id] [int] IDENTITY(1,1) NOT NULL,
-	[Client_Code] [int] NOT NULL,
+	[Client_Code] [varchar](3) NOT NULL,
 	[Contact_Person_Name] [varchar](35) NOT NULL,
 	[Business_Name] [varchar](35) NOT NULL,
 	[Phone_Number] [varchar](15) NOT NULL,
@@ -122,7 +122,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EMPLOYEE](
-	[Employee_Number] [int] IDENTITY(1,1) NOT NULL,
+	[Employee_Number] [int] IDENTITY(1000,1) NOT NULL,
 	[Id_Number] [varchar](25) NOT NULL,
 	[First_Name] [varchar](25) NOT NULL,
 	[Middle_Name] [varchar](25) NULL,
@@ -152,7 +152,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[EQUIPMENT](
 	[Equipment_Id] [int] IDENTITY(1,1) NOT NULL,
-	[Equipment_Code] [int] NOT NULL,
+	[Equipment_Code] [varchar](3) NOT NULL,
 	[Name] [varchar](35) NOT NULL,
 	[Description] [varchar](255) NOT NULL,
 	[Quantity] [int] NOT NULL,
