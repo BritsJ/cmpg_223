@@ -75,6 +75,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "rptSales";
             this.Text = "Sales Report";
+            this.Load += new System.EventHandler(this.rptSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
