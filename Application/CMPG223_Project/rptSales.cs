@@ -16,5 +16,10 @@ namespace CMPG223_Project
         {
             InitializeComponent();
         }
+
+        private void rptSales_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
