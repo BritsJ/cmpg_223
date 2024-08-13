@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -6,7 +7,6 @@ namespace CMPG223_Project
 {
     public partial class frmMain : Form
     {
-        private DatabaseHelper dbHelper = new DatabaseHelper();
 
         public int userId { get; set; }
         public bool isUserAdmin { get; set; }
@@ -20,36 +20,27 @@ namespace CMPG223_Project
             LoadSettings();
         }
 
-        private bool IsUserAdmin()
+        private void IsUserAdmin()
         {
-            string qry = @"SELECT IsAdmin FROM [dbo].[SYSTEM_USER] WHERE UserId = @UserId";
-
-            SqlParameter[] parameters = new SqlParameter[]
+            try
             {
-                new SqlParameter("@UserId", userId)
-            };
-
-            using (SqlConnection conn = dbHelper.GetConnection())
-            {
-                conn.Open();
-                SqlCommand command = new SqlCommand(qry, conn);
-                if (parameters != null)
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    command.Parameters.AddRange(parameters);
-                }
+            new SqlParameter("@UserId", userId)
+                };
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetIsAdminByUserId", parameters))
                 {
                     if (reader.Read())
                     {
-                        return Convert.ToBoolean(reader["IsAdmin"]);
+                        isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
                     }
-                    return false;
                 }
             }
-
-            
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,45 +63,40 @@ namespace CMPG223_Project
                 return false;
             }
 
-            string qry = @"SELECT IsActive, UserId, IsAdmin
-                   FROM [dbo].[SYSTEM_USER]
-                   WHERE Username = @Username 
-                   AND PasswordHash = @Password
-                   AND IsActive = 1";
-
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Username", userName),
-                new SqlParameter("@Password", password)
+                new SqlParameter("@PasswordHash", password)
             };
 
-            using (SqlConnection conn = dbHelper.GetConnection())
+            try
             {
-                conn.Open();
-                SqlCommand command = new SqlCommand(qry, conn);
-                if (parameters != null)
-                {
-                    command.Parameters.AddRange(parameters);
-                }
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("AuthenticateUser", parameters))
                 {
                     if (reader.Read())
                     {
-                        isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
-                        userId = Convert.ToInt32(reader["UserId"]);
+                        bool isActive = Convert.ToBoolean(reader["IsActive"]);
+                        if (isActive)
+                        {
+                            isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
+                            userId = Convert.ToInt32(reader["UserId"]);
 
-                        MessageBox.Show("Login Successful");
-                        return true;
+                            MessageBox.Show("Login Successful");
+                            return true;
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Login Failed");
-                        return false;
-                    }
+
+                    MessageBox.Show("Login Failed");
+                    return false;
                 }
-            } 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
+
 
         private void LoadSettings()
         {
@@ -144,6 +130,13 @@ namespace CMPG223_Project
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCategory frmUpcomingEvents = new frmCategory(userId);
+            frmUpcomingEvents.MdiParent = this;
+            frmUpcomingEvents.Show();
         }
     }
 }
