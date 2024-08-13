@@ -7,7 +7,6 @@ namespace CMPG223_Project
 {
     public partial class frmCategoryAddEdit : Form
     {
-        private DatabaseHelper dbHelper = new DatabaseHelper();
         public int categoryId { get; set; }
         public frmCategoryAddEdit(int categoryId)
         {
@@ -32,29 +31,32 @@ namespace CMPG223_Project
 
         private void GetCategory(int categoryId)
         {
-            // Assume you've created a stored procedure called 'GetCategory'
-            using (SqlConnection conn = dbHelper.GetConnection())
+            try
             {
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand("GetCategoryById", conn))
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Category_Id", categoryId);
+                        new SqlParameter("@Category_Id", categoryId)
+                };
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                // Use the DbHelper class to execute the stored procedure and get the SqlDataReader
+                using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetCategoryById", parameters))
+                {
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            txtName.Text = reader["Category_Name"].ToString();
-                            txtDescription.Text = reader["Category_Description"].ToString();
-                            txtCode.Text = reader["Category_Code"].ToString();
-                            chkCanceled.Checked = Convert.ToBoolean(reader["Is_Active"]);
-                        }
+                        txtName.Text = reader["Category_Name"].ToString();
+                        txtDescription.Text = reader["Category_Description"].ToString();
+                        txtCode.Text = reader["Category_Code"].ToString();
+                        chkCanceled.Checked = Convert.ToBoolean(reader["Is_Active"]);
                     }
                 }
             }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
+            }
         }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -72,41 +74,53 @@ namespace CMPG223_Project
 
         private void AddNewCategory()
         {
-            using (SqlConnection conn = dbHelper.GetConnection())
+            try
             {
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand("AddCategory", conn))
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Category_Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Category_Description", txtDescription.Text);
-                    cmd.Parameters.AddWithValue("@Category_Code", txtCode.Text);
-                    cmd.Parameters.AddWithValue("@Is_Active", chkCanceled.Checked);
+                    new SqlParameter("@Category_Name", txtName.Text),
+                    new SqlParameter("@Category_Description", txtDescription.Text),
+                    new SqlParameter("@Category_Code", txtCode.Text),
+                    new SqlParameter("@Is_Active", chkCanceled.Checked)
+                };
 
-                    cmd.ExecuteNonQuery();
-                }
+                // Use the DbHelper class to execute the stored procedure
+                DbHelper.ExecuteStoredProcedureNonQuery("AddCategory", parameters);
+
+                MessageBox.Show("Category added successfully.");
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
             }
         }
+
 
         private void UpdateCategory()
         {
-            using (SqlConnection conn = dbHelper.GetConnection())
+            try
             {
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand("UpdateCategory", conn))
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Category_Id", categoryId);
-                    cmd.Parameters.AddWithValue("@Category_Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Category_Description", txtDescription.Text);
-                    cmd.Parameters.AddWithValue("@Category_Code", txtCode.Text);
-                    cmd.Parameters.AddWithValue("@Is_Active", chkCanceled.Checked);
+                    new SqlParameter("@Category_Id", categoryId),
+                    new SqlParameter("@Category_Name", txtName.Text),
+                    new SqlParameter("@Category_Description", txtDescription.Text),
+                    new SqlParameter("@Category_Code", txtCode.Text),
+                    new SqlParameter("@Is_Active", chkCanceled.Checked)
+                };
 
-                    cmd.ExecuteNonQuery();
-                }
+                // Use the DbHelper class to execute the stored procedure
+                DbHelper.ExecuteStoredProcedureNonQuery("UpdateCategory", parameters);
+
+                MessageBox.Show("Category updated successfully.");
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
             }
         }
+
     }
 }

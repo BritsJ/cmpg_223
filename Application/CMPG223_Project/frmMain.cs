@@ -7,7 +7,6 @@ namespace CMPG223_Project
 {
     public partial class frmMain : Form
     {
-        private DatabaseHelper dbHelper = new DatabaseHelper();
 
         public int userId { get; set; }
         public bool isUserAdmin { get; set; }
@@ -25,22 +24,16 @@ namespace CMPG223_Project
         {
             try
             {
-                using (SqlConnection conn = dbHelper.GetConnection())
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    conn.Open();
+            new SqlParameter("@UserId", userId)
+                };
 
-                    using (SqlCommand command = new SqlCommand("GetIsAdminByUserId", conn))
+                using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetIsAdminByUserId", parameters))
+                {
+                    if (reader.Read())
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@UserId", userId);
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
-                            }
-                        }
+                        isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
                     }
                 }
             }
@@ -70,37 +63,40 @@ namespace CMPG223_Project
                 return false;
             }
 
-            using (SqlConnection conn = dbHelper.GetConnection())
+            SqlParameter[] parameters = new SqlParameter[]
             {
-                conn.Open();
+                new SqlParameter("@Username", userName),
+                new SqlParameter("@PasswordHash", password)
+            };
 
-                using (SqlCommand command = new SqlCommand("AuthenticateUser", conn))
+            try
+            {
+                using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("AuthenticateUser", parameters))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Username", userName);
-                    command.Parameters.AddWithValue("@PasswordHash", password);
-
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    if (reader.Read())
                     {
-                        if (reader.Read())
+                        bool isActive = Convert.ToBoolean(reader["IsActive"]);
+                        if (isActive)
                         {
-                            bool isActive = Convert.ToBoolean(reader["IsActive"]);
-                            if (isActive)
-                            {
-                                isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
-                                userId = Convert.ToInt32(reader["UserId"]);
+                            isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
+                            userId = Convert.ToInt32(reader["UserId"]);
 
-                                MessageBox.Show("Login Successful");
-                                return true;
-                            }
+                            MessageBox.Show("Login Successful");
+                            return true;
                         }
-
-                        MessageBox.Show("Login Failed");
-                        return false;
                     }
+
+                    MessageBox.Show("Login Failed");
+                    return false;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
+
 
         private void LoadSettings()
         {

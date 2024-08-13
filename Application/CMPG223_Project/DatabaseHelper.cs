@@ -4,16 +4,16 @@ using System.Data.SqlClient;
 
 namespace CMPG223_Project
 {
-    public class DatabaseHelper
+    public static class DbHelper
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString;
 
-        public SqlConnection GetConnection()
+        public static SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
 
-        public SqlDataReader ExecuteQuery(string query, SqlParameter[] parameters)
+        public static SqlDataReader ExecuteQuery(string query, SqlParameter[] parameters)
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -27,7 +27,7 @@ namespace CMPG223_Project
             }
         }
 
-        public int ExecuteNonQuery(string query, SqlParameter[] parameters)
+        public static int ExecuteNonQuery(string query, SqlParameter[] parameters)
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -38,6 +38,63 @@ namespace CMPG223_Project
                 }
                 conn.Open();
                 return command.ExecuteNonQuery();
+            }
+        }
+
+        public static SqlDataReader ExecuteStoredProcedureReader(string storedProcedureName, SqlParameter[] parameters = null)
+        {
+            SqlConnection conn = GetConnection();
+            conn.Open();
+
+            using (SqlCommand command = new SqlCommand(storedProcedureName, conn))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                return command.ExecuteReader(CommandBehavior.CloseConnection);
+            }
+        }
+
+        public static DataSet ExecuteStoredProcedureDataSet(string storedProcedureName, string sourceTable, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(storedProcedureName, conn))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataSet ds = new DataSet();
+                        adapter.Fill(ds, sourceTable);
+                        return ds;
+                    }
+                }
+            }
+        }
+
+        public static void ExecuteStoredProcedureNonQuery(string storedProcedureName, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(storedProcedureName, conn))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
     }

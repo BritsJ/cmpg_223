@@ -8,7 +8,6 @@ namespace CMPG223_Project
     public partial class frmCategory : Form
     {
         private int userId { get; set; }
-        private DatabaseHelper dbHelper = new DatabaseHelper();
         public frmCategory(int userId)
         {
             InitializeComponent();
@@ -39,24 +38,18 @@ namespace CMPG223_Project
         {
             try
             {
-                using (SqlConnection conn = dbHelper.GetConnection())
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    conn.Open();
+                    new SqlParameter("@SearchTerm", txtSearch.Text)
+                };
 
-                    // Assume you've created a stored procedure called 'SearchEvents'
-                    using (SqlCommand cmd = new SqlCommand("SearchCategories", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@SearchTerm", txtSearch.Text);
+                // Use the DbHelper class to execute the stored procedure and get the DataSet
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchCategories", "Categories", parameters);
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds, "Categories");
-
-                        dgvMyCategories.DataSource = ds;
-                        dgvMyCategories.DataMember = "Categories";
-                    }
-                }
+                // Bind the DataSet to the DataGridView
+                dgvMyCategories.DataSource = ds;
+                dgvMyCategories.DataMember = "Categories";
             }
             catch (SqlException sqlException)
             {
