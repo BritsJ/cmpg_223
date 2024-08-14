@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace CMPG223_Project
 {
-    public partial class rptSales : Form
+    public partial class rptStock : Form
     {
         private string connectionString = "Server=DESKTOP;Database=koosieSeDatabase;User Id=sa;Password=p@55w0rd01;";
 
-        public rptSales()
+        public rptStock()
         {
             InitializeComponent();
             InitializeDataGridView();
@@ -43,28 +43,28 @@ namespace CMPG223_Project
 
         private string BuildQuery(string searchText, string sortOption)
         {
-            string baseQuery = "SELECT * FROM SALE";
+            string baseQuery = "SELECT * FROM STOCK";
             string whereClause = string.Empty;
             string orderByClause = string.Empty;
 
             if (!string.IsNullOrEmpty(searchText))
             {
-                whereClause = $" WHERE Employee_Number LIKE '%{searchText}%' OR Sale_Id LIKE '%{searchText}%'";
+                whereClause = $" WHERE Stock_Name LIKE '%{searchText}%' OR Stock_Description LIKE '%{searchText}%'";
             }
 
             switch (sortOption)
             {
                 case "Alphabetically":
-                    orderByClause = " ORDER BY Employee_Number";
+                    orderByClause = " ORDER BY Stock_Name";
                     break;
                 case "By ID":
-                    orderByClause = " ORDER BY Sale_Id";
+                    orderByClause = " ORDER BY Stock_Id";
                     break;
-                case "Date(Ascending)":
-                    orderByClause = " ORDER BY Sale_Date_Time ASC";
+                case "Quantity(Ascending)":
+                    orderByClause = " ORDER BY Quantity ASC";
                     break;
-                case "Date(Descending)":
-                    orderByClause = " ORDER BY Sale_Date_Time DESC";
+                case "Quantity(Descending)":
+                    orderByClause = " ORDER BY Quantity DESC";
                     break;
                 default:
                     orderByClause = string.Empty;
