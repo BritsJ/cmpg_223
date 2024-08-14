@@ -138,5 +138,12 @@ namespace CMPG223_Project
             frmUpcomingEvents.MdiParent = this;
             frmUpcomingEvents.Show();
         }
+
+        private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEmployee frmEmployee = new frmEmployee(userId);
+            frmEmployee.MdiParent = this;
+            frmEmployee.Show();
+        }
     }
 }
