@@ -80,6 +80,12 @@
     <Compile Include="rptSales.Designer.cs">
       <DependentUpon>rptSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="rptStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rptStock.Designer.cs">
+      <DependentUpon>rptStock.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +109,9 @@
     </Compile>
     <EmbeddedResource Include="rptSales.resx">
       <DependentUpon>rptSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptStock.resx">
+      <DependentUpon>rptStock.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
