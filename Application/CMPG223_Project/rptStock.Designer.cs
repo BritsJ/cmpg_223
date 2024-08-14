@@ -1,6 +1,6 @@
 ﻿namespace CMPG223_Project
 {
-    partial class rptSales
+    partial class rptStock
     {
         /// <summary>
         /// Required designer variable.
@@ -28,82 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptSales));
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbSort = new System.Windows.Forms.ComboBox();
-            this.btnReport = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptStock));
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.cbSort = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // printDialog1
+            // label1
             // 
-            this.printDialog1.UseEXDialog = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Enter word or name to search:";
             // 
-            // label2
+            // txtSearch
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Sort:";
+            this.txtSearch.Location = new System.Drawing.Point(12, 66);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.TabIndex = 4;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 170);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 272);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // btnReport
+            // 
+            this.btnReport.Location = new System.Drawing.Point(12, 132);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(100, 32);
+            this.btnReport.TabIndex = 6;
+            this.btnReport.Text = "Generate Report";
+            this.btnReport.UseVisualStyleBackColor = true;
             // 
             // cbSort
             // 
             this.cbSort.FormattingEnabled = true;
             this.cbSort.Items.AddRange(new object[] {
-            "Names Alphabetically",
+            "Alphabetically",
             "By ID",
-            "Date(Ascending)",
-            "Date(Descending)"});
-            this.cbSort.Location = new System.Drawing.Point(12, 104);
+            "Quantity(Ascending)",
+            "Quantity(Descending)"});
+            this.cbSort.Location = new System.Drawing.Point(12, 105);
             this.cbSort.Name = "cbSort";
             this.cbSort.Size = new System.Drawing.Size(121, 21);
-            this.cbSort.TabIndex = 13;
+            this.cbSort.TabIndex = 7;
             // 
-            // btnReport
+            // label2
             // 
-            this.btnReport.Location = new System.Drawing.Point(12, 131);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(100, 32);
-            this.btnReport.TabIndex = 12;
-            this.btnReport.Text = "Generate Report";
-            this.btnReport.UseVisualStyleBackColor = true;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Sort:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Enter word or name to search:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(12, 65);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 20);
-            this.txtSearch.TabIndex = 10;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 169);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 274);
-            this.dataGridView1.TabIndex = 9;
-            // 
-            // rptSales
+            // rptStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 455);
+            this.ClientSize = new System.Drawing.Size(798, 454);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbSort);
             this.Controls.Add(this.btnReport);
@@ -111,8 +105,8 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "rptSales";
-            this.Text = "Sales Report";
+            this.Name = "rptStock";
+            this.Text = "Stock Report";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -121,12 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbSort;
-        private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.ComboBox cbSort;
+        private System.Windows.Forms.Label label2;
     }
 }

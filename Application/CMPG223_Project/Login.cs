@@ -6,7 +6,7 @@ using System.Windows.Forms;
  * You can login using username "admin" and password "admin"
  */
 
-namespace Exam_Brits_JJ_38980274
+namespace CMPG223_Project
 {
     public partial class Login : Form
     {
@@ -24,6 +24,11 @@ namespace Exam_Brits_JJ_38980274
             Username = txtUsername.Text;
             Password = txtPassword.Text;
             this.Close();
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
 
         }
     }

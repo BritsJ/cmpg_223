@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseHelper.cs" />
     <Compile Include="frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +65,11 @@
     </Compile>
     <Compile Include="frmEmployeeAddEdit.Designer.cs">
       <DependentUpon>frmEmployeeAddEdit.cs</DependentUpon>
+    <Compile Include="frmCategoryAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategoryAddEdit.Designer.cs">
+      <DependentUpon>frmCategoryAddEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -84,6 +91,12 @@
     <Compile Include="rptSales.Designer.cs">
       <DependentUpon>rptSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="rptStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rptStock.Designer.cs">
+      <DependentUpon>rptStock.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +105,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmployeeAddEdit.resx">
       <DependentUpon>frmEmployeeAddEdit.cs</DependentUpon>
+    <EmbeddedResource Include="frmCategoryAddEdit.resx">
+      <DependentUpon>frmCategoryAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -110,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="rptSales.resx">
       <DependentUpon>rptSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptStock.resx">
+      <DependentUpon>rptStock.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

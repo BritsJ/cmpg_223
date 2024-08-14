@@ -1,4 +1,4 @@
-﻿namespace Exam_Brits_JJ_38980274
+﻿namespace CMPG223_Project
 {
     partial class Login
     {
@@ -94,6 +94,7 @@
             this.Controls.Add(this.lblUsername);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
