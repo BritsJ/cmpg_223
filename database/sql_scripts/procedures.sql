@@ -102,3 +102,66 @@ BEGIN
     WHERE Category_Id = @Category_Id;
 END
 GO
+
+
+--------------------
+-----Employees-------
+--------------------
+
+Create or Alter PROCEDURE SearchEmployees
+    @SearchTerm VARCHAR(255)
+AS
+BEGIN
+    SELECT 
+		 [Employee_Number]
+		,[Id_Number]
+		,[First_Name]
+		,[Middle_Name]
+		,[Last_Name]
+		,[Hire_Date]
+		,[Phone_Number]
+		,[Email_Address]
+		,[Physical_Address]
+    FROM [dbo].[EMPLOYEE] 
+    WHERE 
+        [First_Name] LIKE '%' + @SearchTerm + '%' OR
+        [Last_Name] LIKE '%' + @SearchTerm + '%' OR
+        [Email_Address] LIKE '%' + @SearchTerm + '%';
+END
+
+
+GO
+Create or Alter  PROCEDURE AddEmployee
+    @Id_Number VARCHAR(25),
+    @First_Name VARCHAR(25),
+    @Middle_Name VARCHAR(25) = NULL,
+    @Last_Name VARCHAR(25),
+    @Hire_Date DATETIME,
+    @Phone_Number VARCHAR(15),
+    @Email_Address VARCHAR(255),
+    @Physical_Address VARCHAR(255)
+AS
+BEGIN
+    INSERT INTO [dbo].[EMPLOYEE] (
+        [Id_Number],
+        [First_Name],
+        [Middle_Name],
+        [Last_Name],
+        [Hire_Date],
+        [Phone_Number],
+        [Email_Address],
+        [Physical_Address]
+    )
+    VALUES (
+        @Id_Number,
+        @First_Name,
+        @Middle_Name,
+        @Last_Name,
+        @Hire_Date,
+        @Phone_Number,
+        @Email_Address,
+        @Physical_Address
+    );
+    
+    SELECT SCOPE_IDENTITY() AS NewEmployeeNumber;
+END

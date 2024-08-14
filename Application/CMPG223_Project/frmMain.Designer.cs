@@ -97,8 +97,6 @@
             this.maintainanceToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.maintainanceToolStripMenuItem.Text = "Maintainance";
 
-            this.maintainanceToolStripMenuItem.Click += new System.EventHandler(this.maintainanceToolStripMenuItem_Click);
-
             // 
             // categoryToolStripMenuItem
             // 

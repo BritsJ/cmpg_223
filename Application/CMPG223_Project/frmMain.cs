@@ -141,7 +141,7 @@ namespace CMPG223_Project
 
         private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEmployee frmEmployee = new frmEmployee(userId);
+            frmEmployee frmEmployee = new frmEmployee();
             frmEmployee.MdiParent = this;
             frmEmployee.Show();
         }

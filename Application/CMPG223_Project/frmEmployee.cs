@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
 {
     public partial class frmEmployee : Form
     {
-        public bool isUserAdmin {  get; set; }
-        public frmEmployee(bool isUserAdmin)
+
+        public frmEmployee()
         {
             InitializeComponent();
-            this.isUserAdmin = isUserAdmin;
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -62,6 +55,11 @@ namespace CMPG223_Project
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
+        {
+            LoadEmployees();
+        }
+
+        private void frmEmployee_Load(object sender, EventArgs e)
         {
             LoadEmployees();
         }

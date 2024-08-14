@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtsearch = new System.Windows.Forms.TextBox();
-            this.dgvEmployees = new System.Windows.Forms.DataGridView();
-            this.btnadd = new System.Windows.Forms.Button();
-            this.btnedit = new System.Windows.Forms.Button();
             this.btnclose = new System.Windows.Forms.Button();
+            this.btnedit = new System.Windows.Forms.Button();
+            this.btnadd = new System.Windows.Forms.Button();
+            this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.txtsearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.SuspendLayout();
@@ -54,40 +54,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employees";
             // 
-            // label1
+            // btnclose
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Search name:";
-            // 
-            // txtsearch
-            // 
-            this.txtsearch.Location = new System.Drawing.Point(89, 20);
-            this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(147, 20);
-            this.txtsearch.TabIndex = 1;
-            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
-            // 
-            // dgvEmployees
-            // 
-            this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployees.Location = new System.Drawing.Point(7, 56);
-            this.dgvEmployees.Name = "dgvEmployees";
-            this.dgvEmployees.Size = new System.Drawing.Size(783, 333);
-            this.dgvEmployees.TabIndex = 2;
-            // 
-            // btnadd
-            // 
-            this.btnadd.Location = new System.Drawing.Point(7, 395);
-            this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(112, 35);
-            this.btnadd.TabIndex = 3;
-            this.btnadd.Text = "Add";
-            this.btnadd.UseVisualStyleBackColor = true;
-            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
+            this.btnclose.Location = new System.Drawing.Point(676, 395);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(112, 35);
+            this.btnclose.TabIndex = 5;
+            this.btnclose.Text = "Close";
+            this.btnclose.UseVisualStyleBackColor = true;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
             // btnedit
             // 
@@ -99,15 +74,41 @@
             this.btnedit.UseVisualStyleBackColor = true;
             this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
             // 
-            // btnclose
+            // btnadd
             // 
-            this.btnclose.Location = new System.Drawing.Point(676, 395);
-            this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(112, 35);
-            this.btnclose.TabIndex = 5;
-            this.btnclose.Text = "Close";
-            this.btnclose.UseVisualStyleBackColor = true;
-            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            this.btnadd.Location = new System.Drawing.Point(7, 395);
+            this.btnadd.Name = "btnadd";
+            this.btnadd.Size = new System.Drawing.Size(112, 35);
+            this.btnadd.TabIndex = 3;
+            this.btnadd.Text = "Add";
+            this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
+            // 
+            // dgvEmployees
+            // 
+            this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployees.Location = new System.Drawing.Point(7, 56);
+            this.dgvEmployees.Name = "dgvEmployees";
+            this.dgvEmployees.ReadOnly = true;
+            this.dgvEmployees.Size = new System.Drawing.Size(783, 333);
+            this.dgvEmployees.TabIndex = 2;
+            // 
+            // txtsearch
+            // 
+            this.txtsearch.Location = new System.Drawing.Point(89, 20);
+            this.txtsearch.Name = "txtsearch";
+            this.txtsearch.Size = new System.Drawing.Size(147, 20);
+            this.txtsearch.TabIndex = 1;
+            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Search name:";
             // 
             // frmEmployee
             // 
@@ -117,6 +118,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmEmployee";
             this.Text = "Employees";
+            this.Load += new System.EventHandler(this.frmEmployee_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
