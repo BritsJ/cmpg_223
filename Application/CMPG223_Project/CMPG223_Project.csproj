@@ -72,6 +72,12 @@
     <Compile Include="frmCategoryAddEdit.Designer.cs">
       <DependentUpon>frmCategoryAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEquipment.Designer.cs">
+      <DependentUpon>frmEquipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

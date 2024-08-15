@@ -145,5 +145,10 @@ namespace CMPG223_Project
             frmEmployee.MdiParent = this;
             frmEmployee.Show();
         }
+
+        private void equipmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
