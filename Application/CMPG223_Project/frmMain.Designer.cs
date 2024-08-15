@@ -113,6 +113,7 @@
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
             this.stockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stockToolStripMenuItem.Text = "Stock";
+            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
             // 
             // equipmentToolStripMenuItem
             // 
@@ -133,13 +134,13 @@
             // salesToolStripMenuItem
             // 
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
-            this.salesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salesToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.salesToolStripMenuItem.Text = "Sales";
             // 
             // jobsToolStripMenuItem
             // 
             this.jobsToolStripMenuItem.Name = "jobsToolStripMenuItem";
-            this.jobsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jobsToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.jobsToolStripMenuItem.Text = "Jobs";
             // 
             // administratorToolStripMenuItem

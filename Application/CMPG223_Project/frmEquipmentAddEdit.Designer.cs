@@ -184,7 +184,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Name = "frmEquipmentAddEdit";
-            this.Text = "frmEquipmentAddEdit";
+            this.Text = "Equipment add and Edit";
             this.ResumeLayout(false);
             this.PerformLayout();
 

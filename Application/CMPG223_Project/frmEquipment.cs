@@ -29,7 +29,7 @@ namespace CMPG223_Project
 
             frmEquipmentAddEdit frm = new frmEquipmentAddEdit(equipmentId);
             frm.ShowDialog();
-
+            LoadEquipment();
             btnEdit.Enabled = false;
             btnAdd.Enabled = true;
         }

@@ -119,7 +119,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmEquipment";
-            this.Text = "frmEquipment";
+            this.Text = "Equipment";
             this.Load += new System.EventHandler(this.frmEquipment_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
