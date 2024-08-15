@@ -34,7 +34,6 @@ namespace CMPG223_Project
             frmEmployeeAddEdit.ShowDialog();
 
             btnedit.Enabled = false;
-            btn
         }
 
         private void LoadEmployees()

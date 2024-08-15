@@ -78,6 +78,12 @@
     <Compile Include="frmEquipment.Designer.cs">
       <DependentUpon>frmEquipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEquipmentAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEquipmentAddEdit.Designer.cs">
+      <DependentUpon>frmEquipmentAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCategoryAddEdit.resx">
       <DependentUpon>frmCategoryAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEquipment.resx">
+      <DependentUpon>frmEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEquipmentAddEdit.resx">
+      <DependentUpon>frmEquipmentAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
