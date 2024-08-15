@@ -20,7 +20,7 @@ namespace CMPG223_Project
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            frmEmployeeAddEdit frmEmployeeAddEdit = new frmEmployeeAddEdit();
+            frmEmployeeAddEdit frmEmployeeAddEdit = new frmEmployeeAddEdit(0);
             frmEmployeeAddEdit.ShowDialog();
         }
 
@@ -30,8 +30,10 @@ namespace CMPG223_Project
 
             LoadEmployees();
             
-            frmEmployeeAddEdit frmEmployeeAddEdit = new frmEmployeeAddEdit();
+            frmEmployeeAddEdit frmEmployeeAddEdit = new frmEmployeeAddEdit(employeeID);
             frmEmployeeAddEdit.ShowDialog();
+
+            btnedit.Enabled = false;
         }
 
         private void LoadEmployees()
@@ -62,6 +64,11 @@ namespace CMPG223_Project
         private void frmEmployee_Load(object sender, EventArgs e)
         {
             LoadEmployees();
+        }
+
+        private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnedit.Enabled = true;
         }
     }
 }

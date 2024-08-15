@@ -14,16 +14,16 @@ namespace CMPG223_Project
 {
     public partial class frmEmployeeAddEdit : Form
     {
-        public int EmployeeID { get; set; }
-        public frmEmployeeAddEdit()
+        public int employeeID { get; set; }
+        public frmEmployeeAddEdit(int employeeID)
         {
             InitializeComponent();
 
-            this.EmployeeID = EmployeeID;
+            this.employeeID = employeeID;
 
-            if(EmployeeID == 0 )
+            if(employeeID != 0 )
             {
-                GetEmployee(EmployeeID);
+                GetEmployee(employeeID);
             }
         }
 
@@ -89,6 +89,7 @@ namespace CMPG223_Project
             {
                 SqlParameter[] parameter = new SqlParameter[]
                 {
+                    new SqlParameter("Employee_Number", employeeID),
                     new SqlParameter("@Id_Number", txtID.Text),
                     new SqlParameter("@First_Name", txtFirstName.Text),
                     new SqlParameter("@Middle_Name", txtMiddleName.Text),
@@ -111,12 +112,21 @@ namespace CMPG223_Project
 
         private void btnupdate_Click(object sender, EventArgs e)
         {
-            UpdateEmployee();
+            //
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            AddNewEmployee();   
+            if (employeeID != 0)
+            {
+                UpdateEmployee();
+            }
+            else
+            {
+                AddNewEmployee();
+            }
+
+            Close();
         }
     }
 }

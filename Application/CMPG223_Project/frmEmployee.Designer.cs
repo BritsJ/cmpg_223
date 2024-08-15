@@ -66,6 +66,7 @@
             // 
             // btnedit
             // 
+            this.btnedit.Enabled = false;
             this.btnedit.Location = new System.Drawing.Point(125, 395);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(112, 35);
@@ -92,6 +93,7 @@
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.Size = new System.Drawing.Size(783, 333);
             this.dgvEmployees.TabIndex = 2;
+            this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
             // 
             // txtsearch
             // 

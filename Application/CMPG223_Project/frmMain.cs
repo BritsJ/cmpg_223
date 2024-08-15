@@ -145,5 +145,19 @@ namespace CMPG223_Project
             frmEmployee.MdiParent = this;
             frmEmployee.Show();
         }
+
+        private void equipmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEquipment frmEquipment = new frmEquipment();
+            frmEquipment.MdiParent = this;
+            frmEquipment.Show();
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStock frmStock = new frmStock();
+            frmStock.MdiParent = this;
+            frmStock.Show();
+        }
     }
 }
