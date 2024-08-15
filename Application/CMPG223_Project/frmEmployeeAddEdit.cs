@@ -89,6 +89,7 @@ namespace CMPG223_Project
             {
                 SqlParameter[] parameter = new SqlParameter[]
                 {
+                    new SqlParameter("Employee_Number", employeeID),
                     new SqlParameter("@Id_Number", txtID.Text),
                     new SqlParameter("@First_Name", txtFirstName.Text),
                     new SqlParameter("@Middle_Name", txtMiddleName.Text),
