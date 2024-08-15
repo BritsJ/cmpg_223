@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace CMPG223_Project
 {
     public partial class rptSales : Form
     {
-        private string connectionString = "Server=DESKTOP;Database=koosieSeDatabase;User Id=sa;Password=p@55w0rd01;";
-
         public rptSales()
         {
             InitializeComponent();
@@ -30,48 +23,81 @@ namespace CMPG223_Project
         {
             string searchText = txtSearch.Text.Trim();
             string sortOption = cbSort.SelectedItem?.ToString();
-            string query = BuildQuery(searchText, sortOption);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            DataTable dataTable;
+
+            if (!string.IsNullOrEmpty(searchText) && !string.IsNullOrEmpty(sortOption))
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                dataGridView1.DataSource = dataTable;
+                dataTable = ExecuteSearchAndSortQuery(searchText, sortOption);
             }
+            else if (!string.IsNullOrEmpty(searchText))
+            {
+                dataTable = ExecuteSearchQuery(searchText);
+            }
+            else if (!string.IsNullOrEmpty(sortOption))
+            {
+                dataTable = ExecuteSortQuery(sortOption);
+            }
+            else
+            {
+                dataTable = ExecuteAllRecordsQuery();
+            }
+
+            dataGridView1.DataSource = dataTable;
         }
 
-        private string BuildQuery(string searchText, string sortOption)
+        private DataTable ExecuteSearchAndSortQuery(string searchText, string sortOption)
         {
-            string baseQuery = "SELECT * FROM SALE";
-            string whereClause = string.Empty;
-            string orderByClause = string.Empty;
+            DataTable searchResult = ExecuteSearchQuery(searchText);
+            DataTable sortedResult = ExecuteSortQuery(sortOption);
 
-            if (!string.IsNullOrEmpty(searchText))
+            // Combine searchResult and sortedResult
+            DataTable combinedResult = searchResult.Clone(); // Create an empty table with the same schema
+            foreach (DataRow row in sortedResult.Rows)
             {
-                whereClause = $" WHERE Employee_Number LIKE '%{searchText}%' OR Sale_Id LIKE '%{searchText}%'";
+                DataRow[] foundRows = searchResult.Select($"Sale_Id = '{row["Sale_Id"]}'");
+                if (foundRows.Length > 0)
+                {
+                    combinedResult.ImportRow(foundRows[0]);
+                }
             }
+            return combinedResult;
+        }
 
-            switch (sortOption)
+        private DataTable ExecuteSearchQuery(string searchText)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
             {
-                case "Alphabetically":
-                    orderByClause = " ORDER BY Employee_Number";
-                    break;
-                case "By ID":
-                    orderByClause = " ORDER BY Sale_Id";
-                    break;
-                case "Date(Ascending)":
-                    orderByClause = " ORDER BY Sale_Date_Time ASC";
-                    break;
-                case "Date(Descending)":
-                    orderByClause = " ORDER BY Sale_Date_Time DESC";
-                    break;
-                default:
-                    orderByClause = string.Empty;
-                    break;
-            }
+                new SqlParameter("@SearchTerm", searchText)
+            };
 
-            return $"{baseQuery}{whereClause}{orderByClause}";
+            DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchSales", "Sales", parameters);
+            return ds.Tables["Sales"];
+        }
+
+        private DataTable ExecuteSortQuery(string sortOption)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@SortOption", sortOption)
+            };
+
+            DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SortSales", "Sales", parameters);
+            return ds.Tables["Sales"];
+        }
+
+        private DataTable ExecuteAllRecordsQuery()
+        {
+            using (SqlConnection conn = DbHelper.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand("SELECT * FROM SALE", conn))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
         }
     }
 }

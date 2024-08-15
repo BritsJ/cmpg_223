@@ -165,3 +165,31 @@ BEGIN
     
     SELECT SCOPE_IDENTITY() AS NewEmployeeNumber;
 END
+
+--------------------
+-------SALE---------
+--------------------
+GO
+CREATE or ALTER PROCEDURE SearchSales
+    @SearchTerm NVARCHAR(100)
+AS
+BEGIN
+    SELECT * FROM SALE
+    WHERE Employee_Number LIKE '%' + @SearchTerm + '%'
+       OR Sale_Id LIKE '%' + @SearchTerm + '%';
+END;
+
+GO
+CREATE or ALTER PROCEDURE SortSales
+    @SortOption NVARCHAR(50)
+AS
+BEGIN
+    SELECT * FROM SALE
+    ORDER BY 
+        CASE 
+            WHEN @SortOption = 'Alphabetically' THEN Employee_Number
+            WHEN @SortOption = 'By ID' THEN Sale_Id
+            WHEN @SortOption = 'Date(Ascending)' THEN CAST(Sale_Date_Time AS NVARCHAR)
+            WHEN @SortOption = 'Date(Descending)' THEN CAST(Sale_Date_Time AS NVARCHAR)
+        END;
+END;

@@ -29,24 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptSales));
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.cbSort = new System.Windows.Forms.ComboBox();
             this.btnReport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 88);
+            this.label2.Location = new System.Drawing.Point(3, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 14;
@@ -60,14 +57,14 @@
             "By ID",
             "Date(Ascending)",
             "Date(Descending)"});
-            this.cbSort.Location = new System.Drawing.Point(12, 104);
+            this.cbSort.Location = new System.Drawing.Point(6, 90);
             this.cbSort.Name = "cbSort";
             this.cbSort.Size = new System.Drawing.Size(121, 21);
             this.cbSort.TabIndex = 13;
             // 
             // btnReport
             // 
-            this.btnReport.Location = new System.Drawing.Point(12, 131);
+            this.btnReport.Location = new System.Drawing.Point(6, 117);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(100, 32);
             this.btnReport.TabIndex = 12;
@@ -78,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 49);
+            this.label1.Location = new System.Drawing.Point(3, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 13);
             this.label1.TabIndex = 11;
@@ -86,7 +83,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(12, 65);
+            this.txtSearch.Location = new System.Drawing.Point(6, 42);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 10;
@@ -94,39 +91,49 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 169);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 155);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 274);
+            this.dataGridView1.Size = new System.Drawing.Size(1009, 467);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.btnReport);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Controls.Add(this.cbSort);
+            this.groupBox1.Location = new System.Drawing.Point(12, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1021, 628);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sales";
             // 
             // rptSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 455);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbSort);
-            this.Controls.Add(this.btnReport);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1045, 658);
+            this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "rptSales";
             this.Text = "Sales Report";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbSort;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
