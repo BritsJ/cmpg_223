@@ -51,23 +51,25 @@ namespace CMPG223_Project
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                        new SqlParameter("@Equipment_Id", equipmentId)
+                    new SqlParameter("@Equipment_Id", equipmentId)
                 };
 
                 using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetEquipmentById", parameters))
                 {
                     if (reader.Read())
                     {
-                        txtName.Text = reader["Category_Name"].ToString();
-                        txtDescription.Text = reader["Category_Description"].ToString();
-                        txtCode.Text = reader["Category_Code"].ToString();
+                        txtCode.Text = reader["Equipment_Code"].ToString();
+                        txtName.Text = reader["Name"].ToString();
+                        txtDescription.Text = reader["Description"].ToString();
+                        txtQuantity.Text = reader["Quantity"].ToString();
+                        txtCheckedOut.Text = reader["Quantity_Checked_Out"].ToString();
                         chkCanceled.Checked = Convert.ToBoolean(reader["Is_Active"]);
                     }
                 }
             }
-            catch (SqlException sqlException)
+            catch (SqlException ex)
             {
-                MessageBox.Show(sqlException.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -102,7 +104,7 @@ namespace CMPG223_Project
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@Category_Id", equipmentId),
+                    new SqlParameter("@Equipment_Id", equipmentId),
                     new SqlParameter("@Equipment_Code", txtCode.Text),
                     new SqlParameter("@Name", txtName.Text),
                     new SqlParameter("@Description", txtDescription.Text),
