@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -94,6 +95,60 @@ namespace CMPG223_Project
 
                     conn.Open();
                     command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static int ExecuteStoredProcedureWithOutput(string storedProcedureName, string outputParameter, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(storedProcedureName, conn))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    SqlParameter outputId = new SqlParameter
+                    {
+                        ParameterName = outputParameter,
+                        SqlDbType = SqlDbType.Int,
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputId);
+
+                    conn.Open();
+                    command.ExecuteNonQuery();
+
+                    return (int)outputId.Value;
+                }
+            }
+        }
+
+        public static void ExecuteTransaction(List<SqlCommand> commands)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var command in commands)
+                        {
+                            command.Connection = conn;
+                            command.Transaction = transaction;
+                            command.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }

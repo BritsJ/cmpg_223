@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -10,6 +9,7 @@ namespace CMPG223_Project
 
         public int userId { get; set; }
         public bool isUserAdmin { get; set; }
+
         public frmMain()
         {
             InitializeComponent();
@@ -18,29 +18,6 @@ namespace CMPG223_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadSettings();
-        }
-
-        private void IsUserAdmin()
-        {
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-            new SqlParameter("@UserId", userId)
-                };
-
-                using (SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetIsAdminByUserId", parameters))
-                {
-                    if (reader.Read())
-                    {
-                        isUserAdmin = Convert.ToBoolean(reader["IsAdmin"]);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -100,7 +77,7 @@ namespace CMPG223_Project
 
         private void LoadSettings()
         {
-            IsUserAdmin();
+
 
             //check if user is loged in and is admin
             if (userId != 0)
@@ -158,6 +135,13 @@ namespace CMPG223_Project
             frmStock frmStock = new frmStock();
             frmStock.MdiParent = this;
             frmStock.Show();
+        }
+
+        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSales frmSales = new frmSales(userId);
+            frmSales.MdiParent = this;
+            frmSales.Show();
         }
     }
 }
