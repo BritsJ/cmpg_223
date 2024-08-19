@@ -48,6 +48,10 @@ namespace CMPG223_Project
                         txtPhoneNumber.Text = reader["Phone_Number"].ToString();
                         txtEmailAddress.Text = reader["Email_Address"].ToString();
                         txtPhysicalAdress.Text = reader["Physical_Address"].ToString();
+                        txtusername.Text = reader["Username"].ToString();
+                        txtpassword.Text = reader["PasswordHash"].ToString();
+                        chkadmin.Checked = Convert.ToBoolean(reader["IsAdmin"]);
+                        chkactive.Checked = Convert.ToBoolean(reader["IsActive"]);
                     }
                 }
             }
@@ -70,7 +74,11 @@ namespace CMPG223_Project
                     new SqlParameter("@Hire_Date", dateTimePicker1.Value),
                     new SqlParameter("@Phone_Number", txtPhoneNumber.Text),
                     new SqlParameter("@Email_Address", txtEmailAddress.Text),
-                    new SqlParameter("@Physical_Address", txtPhysicalAdress.Text)
+                    new SqlParameter("@Physical_Address", txtPhysicalAdress.Text),
+                    new SqlParameter("@Username", txtusername.Text),
+                    new SqlParameter("@PasswordHash", txtpassword.Text),
+                    new SqlParameter("@IsAdmin", chkadmin.Checked),
+                    new SqlParameter("@IsActive", chkactive.Checked)
                 };
 
                 DbHelper.ExecuteStoredProcedureNonQuery("AddEmployee", parameter);
@@ -97,7 +105,11 @@ namespace CMPG223_Project
                     new SqlParameter("@Hire_Date", dateTimePicker1.Value),
                     new SqlParameter("@Phone_Number", txtPhoneNumber.Text),
                     new SqlParameter("@Email_Address", txtEmailAddress.Text),
-                    new SqlParameter("@Physical_Address", txtPhysicalAdress.Text)
+                    new SqlParameter("@Physical_Address", txtPhysicalAdress.Text),
+                    new SqlParameter("@Username", txtusername.Text),
+                    new SqlParameter("@PasswordHash", txtpassword.Text),
+                    new SqlParameter("@IsAdmin", chkadmin.Checked),
+                    new SqlParameter("@IsActive", chkactive.Checked)
                 };
 
                 DbHelper.ExecuteStoredProcedureNonQuery("UpdateEmployee", parameter);
