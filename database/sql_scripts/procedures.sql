@@ -113,6 +113,10 @@ GO
 DROP PROCEDURE [dbo].[AddCategory]
 GO
 
+/****** Object:  StoredProcedure [dbo].[SearchAndSortSales]    Script Date: 2024/08/16 07:49:04 ******/
+DROP PROCEDURE [dbo].[SearchAndSortSales]
+GO
+
 /****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
 SET ANSI_NULLS ON
 GO
@@ -894,4 +898,52 @@ BEGIN
 END
 GO
 
+-- Create the SearchAndSortSales stored procedure
+GO
+CREATE PROCEDURE[dbo].[SearchAndSortSales]
+    @SearchTerm NVARCHAR(100) = NULL,
+    @SortOption NVARCHAR(50) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
 
+    SELECT * 
+    FROM SALE
+    WHERE (@SearchTerm IS NULL 
+           OR Employee_Number LIKE '%' + @SearchTerm + '%' 
+           OR CAST(Sale_Id AS NVARCHAR) LIKE '%' + @SearchTerm + '%')
+    ORDER BY 
+        CASE 
+            WHEN @SortOption = 'Alphabetically' THEN Employee_Number
+            WHEN @SortOption = 'By ID' THEN CAST(Sale_Id AS NVARCHAR)
+            WHEN @SortOption = 'Date(Ascending)' THEN Sale_Date_Time
+            WHEN @SortOption = 'Date(Descending)' THEN Sale_Date_Time
+            ELSE Employee_Number -- Default sorting if no sort option provided
+        END 
+END;
+GO
+
+GO
+CREATE OR ALTER PROCEDURE [dbo].[SeachAndSortStock]
+    @SearchTerm NVARCHAR(100) = NULL,
+    @SortOption NVARCHAR(50) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT * 
+    FROM STOCK
+    WHERE (@SearchTerm IS NULL 
+           OR Stock_Code LIKE '%' + @SearchTerm + '%' 
+           OR Stock_Name LIKE '%' + @SearchTerm + '%' 
+           OR Stock_Description LIKE '%' + @SearchTerm + '%')
+    ORDER BY 
+        CASE 
+            WHEN @SortOption = 'Stock Code' THEN Stock_Code
+            WHEN @SortOption = 'Stock Name' THEN Stock_Name
+            WHEN @SortOption = 'Purchase Date (Ascending)' THEN Purchase_Date
+            WHEN @SortOption = 'Purchase Date (Descending)' THEN Purchase_Date
+            ELSE Stock_Code -- Default sorting if no sort option provided
+        END
+END;
+GO

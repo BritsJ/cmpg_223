@@ -26,17 +26,9 @@ namespace CMPG223_Project
 
             DataTable dataTable;
 
-            if (!string.IsNullOrEmpty(searchText) && !string.IsNullOrEmpty(sortOption))
+            if (!string.IsNullOrEmpty(searchText) || !string.IsNullOrEmpty(sortOption))
             {
-                dataTable = ExecuteSearchAndSortQuery(searchText, sortOption);
-            }
-            else if (!string.IsNullOrEmpty(searchText))
-            {
-                dataTable = ExecuteSearchQuery(searchText);
-            }
-            else if (!string.IsNullOrEmpty(sortOption))
-            {
-                dataTable = ExecuteSortQuery(sortOption);
+                dataTable = GenerateSalesReport(searchText, sortOption);
             }
             else
             {
@@ -46,44 +38,28 @@ namespace CMPG223_Project
             dataGridView1.DataSource = dataTable;
         }
 
-        private DataTable ExecuteSearchAndSortQuery(string searchText, string sortOption)
+        private DataTable GenerateSalesReport(string searchTerm, string sortOption)
         {
-            DataTable searchResult = ExecuteSearchQuery(searchText);
-            DataTable sortedResult = ExecuteSortQuery(sortOption);
-
-            // Combine searchResult and sortedResult
-            DataTable combinedResult = searchResult.Clone(); // Create an empty table with the same schema
-            foreach (DataRow row in sortedResult.Rows)
+            try
             {
-                DataRow[] foundRows = searchResult.Select($"Sale_Id = '{row["Sale_Id"]}'");
-                if (foundRows.Length > 0)
+                // Define parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    combinedResult.ImportRow(foundRows[0]);
-                }
+                    new SqlParameter("@SearchTerm", string.IsNullOrEmpty(searchTerm) ? (object)DBNull.Value : searchTerm),
+                    new SqlParameter("@SortOption", string.IsNullOrEmpty(sortOption) ? (object)DBNull.Value : sortOption)
+                };
+
+                // Execute the stored procedure and get the DataSet
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchAndSortSales", "Sales", parameters);
+
+                // Return the DataTable from the DataSet
+                return ds.Tables["Sales"];
             }
-            return combinedResult;
-        }
-
-        private DataTable ExecuteSearchQuery(string searchText)
-        {
-            SqlParameter[] parameters = new SqlParameter[]
+            catch (SqlException sqlException)
             {
-                new SqlParameter("@SearchTerm", searchText)
-            };
-
-            DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchSales", "Sales", parameters);
-            return ds.Tables["Sales"];
-        }
-
-        private DataTable ExecuteSortQuery(string sortOption)
-        {
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@SortOption", sortOption)
-            };
-
-            DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SortSales", "Sales", parameters);
-            return ds.Tables["Sales"];
+                MessageBox.Show(sqlException.Message);
+                return null;
+            }
         }
 
         private DataTable ExecuteAllRecordsQuery()
