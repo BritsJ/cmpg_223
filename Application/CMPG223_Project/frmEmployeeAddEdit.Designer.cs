@@ -47,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnclose = new System.Windows.Forms.Button();
-            this.btnupdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,29 +215,18 @@
             // 
             // btnclose
             // 
-            this.btnclose.Location = new System.Drawing.Point(240, 285);
+            this.btnclose.Location = new System.Drawing.Point(143, 285);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(108, 29);
             this.btnclose.TabIndex = 2;
             this.btnclose.Text = "Close";
             this.btnclose.UseVisualStyleBackColor = true;
             // 
-            // btnupdate
-            // 
-            this.btnupdate.Location = new System.Drawing.Point(126, 285);
-            this.btnupdate.Name = "btnupdate";
-            this.btnupdate.Size = new System.Drawing.Size(108, 29);
-            this.btnupdate.TabIndex = 3;
-            this.btnupdate.Text = "Update";
-            this.btnupdate.UseVisualStyleBackColor = true;
-            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
-            // 
             // frmEmployeeAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 325);
-            this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.btnclose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
@@ -271,6 +259,5 @@
         private System.Windows.Forms.TextBox txtPhysicalAdress;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button btnupdate;
     }
 }
