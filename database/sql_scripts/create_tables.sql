@@ -1,120 +1,7 @@
 USE [koosieSeDatabase]
 GO
 
-ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [Stock_Selling_Price_min]
-GO
-
-ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [Stock_Purchase_Price_min]
-GO
-
-ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Sale_Item_Quantity_min]
-GO
-
-ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Sale_Item_Price_min]
-GO
-
-ALTER TABLE [dbo].[SALE] DROP CONSTRAINT [Sale_Cash_Received_min]
-GO
-
-ALTER TABLE [dbo].[EQUIPMENT] DROP CONSTRAINT [Equipment_Quantity_min]
-GO
-
-ALTER TABLE [dbo].[SUBCATEGORY] DROP CONSTRAINT [Cat_Subcat_fk]
-GO
-
-ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [Sub_Stock_fk]
-GO
-
-ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Stock_Sale_Item_fk]
-GO
-
-ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Sale_Sale_Item_fk]
-GO
-
-ALTER TABLE [dbo].[SALE] DROP CONSTRAINT [Sale_Emp_fk]
-GO
-
-ALTER TABLE [dbo].[JOB_EQUIPMENT] DROP CONSTRAINT [Job_Job_Equip_fk]
-GO
-
-ALTER TABLE [dbo].[JOB_EQUIPMENT] DROP CONSTRAINT [Equip_Job_fk]
-GO
-
-ALTER TABLE [dbo].[JOB] DROP CONSTRAINT [Employee_Job_fk]
-GO
-
-ALTER TABLE [dbo].[JOB] DROP CONSTRAINT [Client_Job_fk]
-GO
-
-ALTER TABLE [dbo].[SUBCATEGORY] DROP CONSTRAINT [DF__SUBCATEGO__Is_Ac__2DB1C7EE]
-GO
-
-ALTER TABLE [dbo].[EQUIPMENT] DROP CONSTRAINT [DF__EQUIPMENT__Is_Ac__2CBDA3B5]
-GO
-
-ALTER TABLE [dbo].[EMPLOYEE] DROP CONSTRAINT [DF__EMPLOYEE__IsActi__2022C2A6]
-GO
-
-ALTER TABLE [dbo].[EMPLOYEE] DROP CONSTRAINT [DF__EMPLOYEE__IsAdmi__1F2E9E6D]
-GO
-
-ALTER TABLE [dbo].[CLIENT] DROP CONSTRAINT [DF__CLIENT__Is_Activ__2BC97F7C]
-GO
-
-ALTER TABLE [dbo].[CATEGORY] DROP CONSTRAINT [DF__CATEGORY__Is_Act__2AD55B43]
-GO
-
-/****** Object:  Table [dbo].[SUBCATEGORY]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SUBCATEGORY]') AND type in (N'U'))
-DROP TABLE [dbo].[SUBCATEGORY]
-GO
-
-/****** Object:  Table [dbo].[STOCK]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[STOCK]') AND type in (N'U'))
-DROP TABLE [dbo].[STOCK]
-GO
-
-/****** Object:  Table [dbo].[SALE_ITEM]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SALE_ITEM]') AND type in (N'U'))
-DROP TABLE [dbo].[SALE_ITEM]
-GO
-
-/****** Object:  Table [dbo].[SALE]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SALE]') AND type in (N'U'))
-DROP TABLE [dbo].[SALE]
-GO
-
-/****** Object:  Table [dbo].[JOB_EQUIPMENT]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[JOB_EQUIPMENT]') AND type in (N'U'))
-DROP TABLE [dbo].[JOB_EQUIPMENT]
-GO
-
-/****** Object:  Table [dbo].[JOB]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[JOB]') AND type in (N'U'))
-DROP TABLE [dbo].[JOB]
-GO
-
-/****** Object:  Table [dbo].[EQUIPMENT]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EQUIPMENT]') AND type in (N'U'))
-DROP TABLE [dbo].[EQUIPMENT]
-GO
-
-/****** Object:  Table [dbo].[EMPLOYEE]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EMPLOYEE]') AND type in (N'U'))
-DROP TABLE [dbo].[EMPLOYEE]
-GO
-
-/****** Object:  Table [dbo].[CLIENT]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CLIENT]') AND type in (N'U'))
-DROP TABLE [dbo].[CLIENT]
-GO
-
-/****** Object:  Table [dbo].[CATEGORY]    Script Date: 2024/08/16 07:50:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CATEGORY]') AND type in (N'U'))
-DROP TABLE [dbo].[CATEGORY]
-GO
-
-/****** Object:  Table [dbo].[CATEGORY]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[CATEGORY]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -138,7 +25,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[CLIENT]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[CLIENT]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -166,7 +53,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[EMPLOYEE]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[EMPLOYEE]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -206,7 +93,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[EQUIPMENT]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[EQUIPMENT]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -232,7 +119,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[JOB]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[JOB]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -253,7 +140,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[JOB_EQUIPMENT]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[JOB_EQUIPMENT]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -271,7 +158,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[SALE]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[SALE]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -290,7 +177,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[SALE_ITEM]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[SALE_ITEM]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -310,7 +197,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[STOCK]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[STOCK]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -338,7 +225,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[SUBCATEGORY]    Script Date: 2024/08/16 07:50:17 ******/
+/****** Object:  Table [dbo].[SUBCATEGORY]    Script Date: 2024/08/20 21:15:29 ******/
 SET ANSI_NULLS ON
 GO
 
