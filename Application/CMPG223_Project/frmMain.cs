@@ -143,5 +143,12 @@ namespace CMPG223_Project
             frmSales.MdiParent = this;
             frmSales.Show();
         }
+
+        private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients();
+            frmClients.MdiParent = this;
+            frmClients.Show();
+        }
     }
 }
