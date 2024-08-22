@@ -51,7 +51,7 @@ namespace CMPG223_Project
                     new SqlParameter("@SearchTerm", txtSearch.Text)
                 };
 
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchStock", "Stock", parameters);
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchStocks", "Stock", parameters);
 
                 dgvStock.DataSource = ds;
                 dgvStock.DataMember = "Categories";
