@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockAddEdit));
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.purchaseDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPurchase = new System.Windows.Forms.TextBox();
-            this.txtSelling = new System.Windows.Forms.TextBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtSelling = new System.Windows.Forms.TextBox();
+            this.txtPurchase = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.purchaseDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,66 +92,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // label1
+            // txtDescription
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Stock Code:";
+            this.txtDescription.Location = new System.Drawing.Point(422, 20);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(295, 148);
+            this.txtDescription.TabIndex = 13;
             // 
-            // label2
+            // txtQuantity
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Stock Name:";
+            this.txtQuantity.Location = new System.Drawing.Point(110, 222);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantity.TabIndex = 12;
             // 
-            // label3
+            // txtSelling
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Purchase Date:";
+            this.txtSelling.Location = new System.Drawing.Point(110, 188);
+            this.txtSelling.Name = "txtSelling";
+            this.txtSelling.Size = new System.Drawing.Size(100, 20);
+            this.txtSelling.TabIndex = 11;
             // 
-            // label4
+            // txtPurchase
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 155);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Purchase Price:";
+            this.txtPurchase.Location = new System.Drawing.Point(110, 155);
+            this.txtPurchase.Name = "txtPurchase";
+            this.txtPurchase.Size = new System.Drawing.Size(100, 20);
+            this.txtPurchase.TabIndex = 10;
             // 
-            // purchaseDatePicker
+            // txtName
             // 
-            this.purchaseDatePicker.Location = new System.Drawing.Point(10, 115);
-            this.purchaseDatePicker.Name = "purchaseDatePicker";
-            this.purchaseDatePicker.Size = new System.Drawing.Size(200, 20);
-            this.purchaseDatePicker.TabIndex = 4;
+            this.txtName.Location = new System.Drawing.Point(110, 55);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.TabIndex = 9;
             // 
-            // label5
+            // txtCode
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(322, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Stock Description:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 188);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Selling price:";
+            this.txtCode.Location = new System.Drawing.Point(110, 20);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(100, 20);
+            this.txtCode.TabIndex = 8;
             // 
             // label7
             // 
@@ -161,48 +144,66 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Quantity:";
             // 
-            // txtCode
+            // label6
             // 
-            this.txtCode.Location = new System.Drawing.Point(110, 20);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 20);
-            this.txtCode.TabIndex = 8;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 188);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Selling price:";
             // 
-            // txtName
+            // label5
             // 
-            this.txtName.Location = new System.Drawing.Point(110, 55);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 9;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(322, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Stock Description:";
             // 
-            // txtPurchase
+            // purchaseDatePicker
             // 
-            this.txtPurchase.Location = new System.Drawing.Point(110, 155);
-            this.txtPurchase.Name = "txtPurchase";
-            this.txtPurchase.Size = new System.Drawing.Size(100, 20);
-            this.txtPurchase.TabIndex = 10;
+            this.purchaseDatePicker.Location = new System.Drawing.Point(10, 115);
+            this.purchaseDatePicker.Name = "purchaseDatePicker";
+            this.purchaseDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.purchaseDatePicker.TabIndex = 4;
             // 
-            // txtSelling
+            // label4
             // 
-            this.txtSelling.Location = new System.Drawing.Point(110, 188);
-            this.txtSelling.Name = "txtSelling";
-            this.txtSelling.Size = new System.Drawing.Size(100, 20);
-            this.txtSelling.TabIndex = 11;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 155);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Purchase Price:";
             // 
-            // txtQuantity
+            // label3
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(110, 222);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
-            this.txtQuantity.TabIndex = 12;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Purchase Date:";
             // 
-            // txtDescription
+            // label2
             // 
-            this.txtDescription.Location = new System.Drawing.Point(422, 20);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(295, 148);
-            this.txtDescription.TabIndex = 13;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Stock Name:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Stock Code:";
             // 
             // frmStockAddEdit
             // 
@@ -212,8 +213,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmStockAddEdit";
-            this.Text = "frmStockAddEdit";
+            this.Text = "Stock Maintainance";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
