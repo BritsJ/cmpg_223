@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txtusername = new System.Windows.Forms.TextBox();
+            this.chkactive = new System.Windows.Forms.CheckBox();
+            this.chkadmin = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.txtPhysicalAdress = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,14 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnclose = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.chkadmin = new System.Windows.Forms.CheckBox();
-            this.chkactive = new System.Windows.Forms.CheckBox();
-            this.txtusername = new System.Windows.Forms.TextBox();
-            this.txtpassword = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +90,76 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information";
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.Location = new System.Drawing.Point(427, 121);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(125, 20);
+            this.txtpassword.TabIndex = 24;
+            // 
+            // txtusername
+            // 
+            this.txtusername.Location = new System.Drawing.Point(426, 87);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(125, 20);
+            this.txtusername.TabIndex = 23;
+            // 
+            // chkactive
+            // 
+            this.chkactive.AutoSize = true;
+            this.chkactive.Location = new System.Drawing.Point(409, 196);
+            this.chkactive.Name = "chkactive";
+            this.chkactive.Size = new System.Drawing.Size(63, 17);
+            this.chkactive.TabIndex = 22;
+            this.chkactive.Text = "isActive";
+            this.chkactive.UseVisualStyleBackColor = true;
+            // 
+            // chkadmin
+            // 
+            this.chkadmin.AutoSize = true;
+            this.chkadmin.Location = new System.Drawing.Point(408, 160);
+            this.chkadmin.Name = "chkadmin";
+            this.chkadmin.Size = new System.Drawing.Size(62, 17);
+            this.chkadmin.TabIndex = 21;
+            this.chkadmin.Text = "isAdmin";
+            this.chkadmin.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(362, 195);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(40, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Active:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(362, 160);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Admin:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(362, 124);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Password:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(362, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Username:";
             // 
             // dateTimePicker1
             // 
@@ -161,9 +231,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(359, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 13);
+            this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Selecet date hired:";
+            this.label7.Text = "Select date hired:";
             // 
             // label6
             // 
@@ -237,76 +307,6 @@
             this.btnclose.TabIndex = 2;
             this.btnclose.Text = "Close";
             this.btnclose.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(362, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Username:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(362, 124);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Password:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(362, 160);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Admin:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(362, 195);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 13);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Active:";
-            // 
-            // chkadmin
-            // 
-            this.chkadmin.AutoSize = true;
-            this.chkadmin.Location = new System.Drawing.Point(408, 160);
-            this.chkadmin.Name = "chkadmin";
-            this.chkadmin.Size = new System.Drawing.Size(62, 17);
-            this.chkadmin.TabIndex = 21;
-            this.chkadmin.Text = "isAdmin";
-            this.chkadmin.UseVisualStyleBackColor = true;
-            // 
-            // chkactive
-            // 
-            this.chkactive.AutoSize = true;
-            this.chkactive.Location = new System.Drawing.Point(409, 196);
-            this.chkactive.Name = "chkactive";
-            this.chkactive.Size = new System.Drawing.Size(63, 17);
-            this.chkactive.TabIndex = 22;
-            this.chkactive.Text = "isActive";
-            this.chkactive.UseVisualStyleBackColor = true;
-            // 
-            // txtusername
-            // 
-            this.txtusername.Location = new System.Drawing.Point(426, 87);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(125, 20);
-            this.txtusername.TabIndex = 23;
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.Location = new System.Drawing.Point(427, 121);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(125, 20);
-            this.txtpassword.TabIndex = 24;
             // 
             // frmEmployeeAddEdit
             // 

@@ -122,5 +122,14 @@ namespace CMPG223_Project
             }
         }
 
+        private void chkCanceled_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

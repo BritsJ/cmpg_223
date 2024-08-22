@@ -60,6 +60,7 @@
             this.chkCanceled.Size = new System.Drawing.Size(15, 14);
             this.chkCanceled.TabIndex = 75;
             this.chkCanceled.UseVisualStyleBackColor = true;
+            this.chkCanceled.CheckedChanged += new System.EventHandler(this.chkCanceled_CheckedChanged);
             // 
             // btnClose
             // 
@@ -107,6 +108,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(213, 26);
             this.txtName.TabIndex = 61;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblDescription
             // 
