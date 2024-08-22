@@ -63,14 +63,17 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(171, 26);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.Text = "admin";
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(220, 100);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(171, 26);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "admin";
             // 
             // btnLogin
             // 
