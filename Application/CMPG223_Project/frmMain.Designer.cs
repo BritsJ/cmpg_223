@@ -143,6 +143,7 @@
             this.jobsToolStripMenuItem.Name = "jobsToolStripMenuItem";
             this.jobsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jobsToolStripMenuItem.Text = "Jobs";
+            this.jobsToolStripMenuItem.Click += new System.EventHandler(this.jobsToolStripMenuItem_Click);
             // 
             // administratorToolStripMenuItem
             // 
@@ -166,6 +167,7 @@
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
             this.clientsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.clientsToolStripMenuItem.Text = "Clients";
+            this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem1
             // 

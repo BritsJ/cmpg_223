@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployeeAddEdit));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.txtusername = new System.Windows.Forms.TextBox();
@@ -95,6 +96,7 @@
             // 
             this.txtpassword.Location = new System.Drawing.Point(427, 121);
             this.txtpassword.Name = "txtpassword";
+            this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(125, 20);
             this.txtpassword.TabIndex = 24;
             // 
@@ -231,9 +233,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(359, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.Size = new System.Drawing.Size(96, 13);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Select date hired:";
+            this.label7.Text = "Selecet date hired:";
             // 
             // label6
             // 
@@ -316,8 +318,9 @@
             this.Controls.Add(this.btnclose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEmployeeAddEdit";
-            this.Text = "Employees";
+            this.Text = "Employees  Maintainance";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

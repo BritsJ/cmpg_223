@@ -157,7 +157,7 @@
             this.Controls.Add(this.lblName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCategoryAddEdit";
-            this.Text = "Categories";
+            this.Text = "Categories Maintainance";
             this.ResumeLayout(false);
             this.PerformLayout();
 
