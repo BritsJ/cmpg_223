@@ -41,22 +41,7 @@ namespace CMPG223_Project
 
         private void LoadEquipment()
         {
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtsearch.Text)
-                };
-
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchEquipment", "Equipment", parameters);
-
-                dgvEquipment.DataSource = ds;
-                dgvEquipment.DataMember = "Equipment";
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            DataGridViewHelper.LoadDataGrid(dgvEquipment, txtsearch.Text, "SearchEquipment", "Equipment");
         }
 
         private void frmEquipment_Load(object sender, EventArgs e)

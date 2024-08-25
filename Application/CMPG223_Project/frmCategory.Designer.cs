@@ -67,8 +67,8 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(85, 33);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(385, 23);
-            this.txtSearch.TabIndex = 4;
+            this.txtSearch.Size = new System.Drawing.Size(310, 23);
+            this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dgvMyCategories
@@ -88,7 +88,7 @@
             this.btnClose.Location = new System.Drawing.Point(673, 327);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(118, 34);
-            this.btnClose.TabIndex = 14;
+            this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -99,7 +99,7 @@
             this.btnAddCategory.Location = new System.Drawing.Point(12, 327);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(118, 34);
-            this.btnAddCategory.TabIndex = 13;
+            this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "Add";
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddEvent_Click);
@@ -110,7 +110,7 @@
             this.btnEditCategory.Location = new System.Drawing.Point(136, 327);
             this.btnEditCategory.Name = "btnEditCategory";
             this.btnEditCategory.Size = new System.Drawing.Size(121, 34);
-            this.btnEditCategory.TabIndex = 12;
+            this.btnEditCategory.TabIndex = 1;
             this.btnEditCategory.Text = "Edit";
             this.btnEditCategory.UseVisualStyleBackColor = true;
             this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
