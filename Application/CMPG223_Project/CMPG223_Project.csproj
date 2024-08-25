@@ -141,6 +141,18 @@
     <Compile Include="frmStockAddEdit.Designer.cs">
       <DependentUpon>frmStockAddEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSubcategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubcategory.Designer.cs">
+      <DependentUpon>frmSubcategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubcategoryAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubcategoryAddEdit.Designer.cs">
+      <DependentUpon>frmSubcategoryAddEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +211,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockAddEdit.resx">
       <DependentUpon>frmStockAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubcategory.resx">
+      <DependentUpon>frmSubcategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubcategoryAddEdit.resx">
+      <DependentUpon>frmSubcategoryAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
