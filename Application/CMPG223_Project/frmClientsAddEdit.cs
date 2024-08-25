@@ -12,14 +12,9 @@ namespace CMPG223_Project
 {
     public partial class frmClientsAddEdit : Form
     {
-        public frmClientsAddEdit(int clientId)
+        public frmClientsAddEdit()
         {
             InitializeComponent();
-        }
-
-        private void frmClientsAddEdit_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

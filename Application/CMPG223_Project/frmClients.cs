@@ -47,7 +47,7 @@ namespace CMPG223_Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmClientsAddEdit frmClientsAddEdit = new frmClientsAddEdit(0);
+            frmClientsEditAdd frmClientsAddEdit = new frmClientsEditAdd(0);
             frmClientsAddEdit.ShowDialog();
             LoadClients();
 
