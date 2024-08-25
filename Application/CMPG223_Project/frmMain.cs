@@ -123,6 +123,13 @@ namespace CMPG223_Project
             frmEmployee.Show();
         }
 
+        private void stockReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport rptStock = new frmReport();
+            rptStock.MdiParent = this;
+            rptStock.Show();
+        }
+
         private void equipmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEquipment frmEquipment = new frmEquipment();
@@ -144,6 +151,13 @@ namespace CMPG223_Project
             frmSales.Show();
         }
 
+        private void reportsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmReport frmReport = new frmReport();
+            frmReport.MdiParent = this;
+            frmReport.Show();
+        }
+        
         private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmClients frmClients = new frmClients();

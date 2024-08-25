@@ -169,7 +169,28 @@ GO
 DROP PROCEDURE [dbo].[AddCategory]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
+DROP PROCEDURE [dbo].[rptClients]
+GO
+
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
+DROP PROCEDURE [dbo].[rptEmployees]
+GO
+
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
+DROP PROCEDURE [dbo].[rptJobs]
+GO
+
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
+DROP PROCEDURE [dbo].[rptSales]
+GO
+
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
+DROP PROCEDURE [dbo].[rptStock]
+GO
+
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/16 07:49:04 ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -1386,13 +1407,39 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[rptClients]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Client_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Client';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Client_Id LIKE N''%' + @SearchValue + '%''
+                    OR Client_Code LIKE N''%' + @SearchValue + '%''
+                    OR Contact_Person_Name LIKE N''%' + @SearchValue + '%''
+                    OR Business_Name LIKE N''%' + @SearchValue + '%''
+                    OR Phone_Number LIKE N''%' + @SearchValue + '%''
+                    OR Email_Address LIKE N''%' + @SearchValue + '%''
+                    OR Physical_Address LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+
 /****** Object:  StoredProcedure [dbo].[UpdateSubcategory]    Script Date: 2024/08/22 21:32:36 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 -- UpdateSubcategory Procedure
 CREATE PROCEDURE [dbo].[UpdateSubcategory]
@@ -1418,4 +1465,107 @@ BEGIN
 END;
 GO
 
+CREATE PROCEDURE [dbo].[rptEmployees]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Employee_Number',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Employee';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Employee_Number LIKE N''%' + @SearchValue + '%''
+                     OR Id_Number LIKE N''%' + @SearchValue + '%''
+                     OR First_Name LIKE N''%' + @SearchValue + '%''
+                     OR Middle_Name LIKE N''%' + @SearchValue + '%''
+                     OR Last_Name LIKE N''%' + @SearchValue + '%''
+                     OR Hire_Date LIKE N''%' + @SearchValue + '%''
+                     OR Phone_Number LIKE N''%' + @SearchValue + '%''
+                     OR Email_Address LIKE N''%' + @SearchValue + '%''
+                     OR Physical_Address LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
 
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+CREATE PROCEDURE [dbo].[rptJobs]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Job_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Job';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Job_Id LIKE N''%' + @SearchValue + '%''
+                    OR Employee_Number LIKE N''%' + @SearchValue + '%''
+                    OR Client_Id LIKE N''%' + @SearchValue + '%''
+                    OR Start_Date_Time LIKE N''%' + @SearchValue + '%''
+                    OR End_Date_Time LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+CREATE PROCEDURE [dbo].[rptStock]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Stock_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Stock';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Stock_Id LIKE N''%' + @SearchValue + '%''
+                    OR Stock_Code LIKE N''%' + @SearchValue + '%''
+                    OR Stock_Name LIKE N''%' + @SearchValue + '%''
+                    OR Purchase_Date LIKE N''%' + @SearchValue + '%''
+                    OR Purchase_Price LIKE N''%' + @SearchValue + '%''
+                    OR Selling_Price LIKE N''%' + @SearchValue + '%''
+                    OR Quantity LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+CREATE PROCEDURE [dbo].[rptSales]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Sale_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Sale';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Sale_Id LIKE N''%' + @SearchValue + '%''
+                    OR Employee_Number LIKE N''%' + @SearchValue + '%''
+                    OR Sale_Date_Time LIKE N''%' + @SearchValue + '%''
+                    OR Cash_Received LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
