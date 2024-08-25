@@ -31,25 +31,7 @@ namespace CMPG223_Project
 
         private void LoadJobs()
         {
-            try
-            {
-                // Define the parameters for the stored procedure
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtSearch.Text)
-                };
-
-                // Use the DbHelper class to execute the stored procedure and get the DataSet
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchJobs", "Jobs", parameters);
-
-                // Bind the DataSet to the DataGridView
-                dgvMyJobs.DataSource = ds;
-                dgvMyJobs.DataMember = "Jobs";
-            }
-            catch (SqlException sqlException)
-            {
-                MessageBox.Show(sqlException.Message);
-            }
+            DataGridViewHelper.LoadDataGrid(dgvMyJobs, txtSearch.Text, "SearchJobs", "Jobs");
         }
 
         private void btnEditJob_Click(object sender, EventArgs e)

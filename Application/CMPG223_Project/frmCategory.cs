@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
@@ -13,7 +11,6 @@ namespace CMPG223_Project
             InitializeComponent();
             this.userId = userId;
         }
-
 
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
@@ -36,25 +33,7 @@ namespace CMPG223_Project
 
         private void LoadCategories()
         {
-            try
-            {
-                // Define the parameters for the stored procedure
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtSearch.Text)
-                };
-
-                // Use the DbHelper class to execute the stored procedure and get the DataSet
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchCategories", "Categories", parameters);
-
-                // Bind the DataSet to the DataGridView
-                dgvMyCategories.DataSource = ds;
-                dgvMyCategories.DataMember = "Categories";
-            }
-            catch (SqlException sqlException)
-            {
-                MessageBox.Show(sqlException.Message);
-            }
+            DataGridViewHelper.LoadDataGrid(dgvMyCategories, txtSearch.Text, "SearchCategories", "Categories");
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

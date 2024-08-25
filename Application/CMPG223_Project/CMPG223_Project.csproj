@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="helpers\DataGridViewHelper.cs" />
+    <Compile Include="helpers\DatabaseHelper.cs" />
     <Compile Include="frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>

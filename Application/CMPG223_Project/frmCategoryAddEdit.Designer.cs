@@ -58,7 +58,7 @@
             this.chkCanceled.Location = new System.Drawing.Point(93, 142);
             this.chkCanceled.Name = "chkCanceled";
             this.chkCanceled.Size = new System.Drawing.Size(15, 14);
-            this.chkCanceled.TabIndex = 75;
+            this.chkCanceled.TabIndex = 2;
             this.chkCanceled.UseVisualStyleBackColor = true;
             this.chkCanceled.CheckedChanged += new System.EventHandler(this.chkCanceled_CheckedChanged);
             // 
@@ -68,7 +68,7 @@
             this.btnClose.Location = new System.Drawing.Point(172, 180);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 31);
-            this.btnClose.TabIndex = 68;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.button1_Click);
@@ -79,7 +79,7 @@
             this.btnSave.Location = new System.Drawing.Point(16, 180);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(134, 31);
-            this.btnSave.TabIndex = 67;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -91,7 +91,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(376, 118);
-            this.txtDescription.TabIndex = 66;
+            this.txtDescription.TabIndex = 3;
             // 
             // txtCode
             // 
@@ -99,7 +99,7 @@
             this.txtCode.Location = new System.Drawing.Point(93, 82);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(213, 26);
-            this.txtCode.TabIndex = 62;
+            this.txtCode.TabIndex = 1;
             // 
             // txtName
             // 
@@ -107,7 +107,7 @@
             this.txtName.Location = new System.Drawing.Point(93, 38);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(213, 26);
-            this.txtName.TabIndex = 61;
+            this.txtName.TabIndex = 0;
             this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblDescription
