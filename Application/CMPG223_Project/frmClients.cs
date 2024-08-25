@@ -58,7 +58,7 @@ namespace CMPG223_Project
         {
             int clientId = Convert.ToInt32(dgvClients.SelectedRows[0].Cells[0].Value);
 
-            frmCategoryAddEdit frmClientsAddEdit = new frmCategoryAddEdit(clientId);
+            frmClientsEditAdd frmClientsAddEdit = new frmClientsEditAdd(clientId);
             frmClientsAddEdit.ShowDialog();
             LoadClients();
             btnAdd.Enabled = false;
