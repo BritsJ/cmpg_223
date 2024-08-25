@@ -30,7 +30,7 @@ namespace CMPG223_Project
 
             }
 
-            dgvJobEquipment.Columns.Add("Equipment_Id", "Id");
+            dgvJobEquipment.Columns.Add("Equipment_Id", "Equipment Id");
             dgvJobEquipment.Columns.Add("Name", "Name");
             dgvJobEquipment.Columns.Add("Description", "Description");
 
@@ -76,6 +76,7 @@ namespace CMPG223_Project
 
         private void LoadJobEquipment()
         {
+
             try
             {
                 // Define the parameters for the stored procedure
@@ -144,11 +145,6 @@ namespace CMPG223_Project
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -156,25 +152,27 @@ namespace CMPG223_Project
 
         private void loadAllEquipment()
         {
-            try
-            {
-                // Define the parameters for the stored procedure
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", "")
-                };
+            DataGridViewHelper.LoadDataGrid(dgvEquipment, txtSearch.Text, "SearchJobEquipment", "Equipment");
 
-                // Use the DbHelper class to execute the stored procedure and get the DataSet
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchJobEquipment", "Equipment", parameters);
+            //try
+            //{
+            //    // Define the parameters for the stored procedure
+            //    SqlParameter[] parameters = new SqlParameter[]
+            //    {
+            //        new SqlParameter("@SearchTerm", "")
+            //    };
 
-                // Bind the DataSet to the DataGridView
-                dgvEquipment.DataSource = ds;
-                dgvEquipment.DataMember = "Equipment";
-            }
-            catch (SqlException sqlException)
-            {
-                MessageBox.Show(sqlException.Message);
-            }
+            //    // Use the DbHelper class to execute the stored procedure and get the DataSet
+            //    DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchJobEquipment", "Equipment", parameters);
+
+            //    // Bind the DataSet to the DataGridView
+            //    dgvEquipment.DataSource = ds;
+            //    dgvEquipment.DataMember = "Equipment";
+            //}
+            //catch (SqlException sqlException)
+            //{
+            //    MessageBox.Show(sqlException.Message);
+            //}
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -184,15 +182,32 @@ namespace CMPG223_Project
 
         private void dgvEquipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Get the selected row and add it to the dgvSaleItems grid
+            // Get the selected row from dgvEquipment
             DataGridViewRow selectedRow = dgvEquipment.Rows[e.RowIndex];
 
+            // Get the data source of dgvJobEquipment
+            var dataSource = dgvJobEquipment.DataSource as DataTable;
 
+            if (dataSource == null)
+            {
+                // If the data source is null, create a new DataTable and set it as the data source
+                dataSource = new DataTable();
+                dataSource.Columns.Add("Equipment Id");
+                dataSource.Columns.Add("Equipment Code");
+                dataSource.Columns.Add("Name");
+                dataSource.Columns.Add("Description");
+                dgvJobEquipment.DataSource = dataSource;
+            }
 
-            dgvJobEquipment.Rows.Add(selectedRow.Cells["Equipment Id"].Value,
-                selectedRow.Cells["Equipment Code"].Value,
-                selectedRow.Cells["Name"].Value,
-                selectedRow.Cells["Description"].Value);
+            // Create a new DataRow and populate it with values from the selected row
+            DataRow newRow = dataSource.NewRow();
+            newRow["Equipment Id"] = selectedRow.Cells[0].Value;
+            newRow["Equipment Code"] = selectedRow.Cells[1].Value;
+            newRow["Name"] = selectedRow.Cells[2].Value;
+            newRow["Description"] = selectedRow.Cells[3].Value;
+
+            // Add the new row to the DataTable
+            dataSource.Rows.Add(newRow);
         }
 
         private void dgvJobEquipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
