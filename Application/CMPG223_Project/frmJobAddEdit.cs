@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
@@ -29,11 +30,6 @@ namespace CMPG223_Project
                 cmbEmployee.Enabled = false;
 
             }
-
-            dgvJobEquipment.Columns.Add("Equipment_Id", "Equipment Id");
-            dgvJobEquipment.Columns.Add("Name", "Name");
-            dgvJobEquipment.Columns.Add("Description", "Description");
-
         }
 
         private void LoadJobDetails()
@@ -48,10 +44,6 @@ namespace CMPG223_Project
 
                 // Use the DbHelper class to execute the stored procedure and get the DataSet
                 DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("GetJobById", "Job", parameters);
-
-                // Bind the DataSet to the DataGridView
-                dgvJobEquipment.DataSource = ds;
-                dgvJobEquipment.DataMember = "Job";
 
                 // Set the values of the controls on the form
                 cmbClient.SelectedValue = ds.Tables[0].Rows[0]["Client_Id"];
@@ -76,27 +68,22 @@ namespace CMPG223_Project
 
         private void LoadJobEquipment()
         {
-
             try
             {
-                // Define the parameters for the stored procedure
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@Job_Id", _jobId)
                 };
 
-                // Use the DbHelper class to execute the stored procedure and get the DataSet
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("GetJobEquipmentByJobId", "JobEquipment", parameters);
-
-                // Bind the DataSet to the DataGridView
-                dgvJobEquipment.DataSource = ds;
-                dgvJobEquipment.DataMember = "JobEquipment";
+                DataTable dt = DbHelper.ExecuteStoredProcedureDataTable("GetJobEquipmentByJobId", parameters);
+                dgvJobEquipment.DataSource = dt;
             }
             catch (SqlException sqlException)
             {
                 MessageBox.Show(sqlException.Message);
             }
         }
+
         private void LoadClients()
         {
             try
@@ -153,31 +140,121 @@ namespace CMPG223_Project
         private void loadAllEquipment()
         {
             DataGridViewHelper.LoadDataGrid(dgvEquipment, txtSearch.Text, "SearchJobEquipment", "Equipment");
-
-            //try
-            //{
-            //    // Define the parameters for the stored procedure
-            //    SqlParameter[] parameters = new SqlParameter[]
-            //    {
-            //        new SqlParameter("@SearchTerm", "")
-            //    };
-
-            //    // Use the DbHelper class to execute the stored procedure and get the DataSet
-            //    DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchJobEquipment", "Equipment", parameters);
-
-            //    // Bind the DataSet to the DataGridView
-            //    dgvEquipment.DataSource = ds;
-            //    dgvEquipment.DataMember = "Equipment";
-            //}
-            //catch (SqlException sqlException)
-            //{
-            //    MessageBox.Show(sqlException.Message);
-            //}
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Add or Update the job
+            if (_jobId > 0)
+            {
+                UpdateJob();
+            }
+            else
+            {
+                AddJob();
+            }
+        }
 
+        private void AddJob()
+        {
+            try
+            {
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@Client_Id", cmbClient.SelectedValue),
+                    new SqlParameter("@Employee_Number", cmbEmployee.SelectedValue),
+                    new SqlParameter("@Start_Date_Time", dtpStartDate.Value),
+                    new SqlParameter("@End_Date_Time", dtpEndDate.Checked ? dtpEndDate.Value : (object)DBNull.Value),
+                    new SqlParameter("@Job_Description", txtDescription.Text)
+                };
+
+                // Use the DbHelper class to execute the stored procedure
+                int jobId = DbHelper.ExecuteStoredProcedureWithOutput("AddJob", "@NewJob_Id", parameters);
+
+
+                SaveJobEquipment(jobId, true);
+
+
+                // Show a success message
+                MessageBox.Show("Job added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Close the form
+                Close();
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
+            }
+        }
+
+        private void SaveJobEquipment(int jobId, bool isAdd)
+        {
+            try
+            {
+                if (!isAdd)
+                {
+                    // Delete all existing equipment for the job
+                    SqlParameter[] deleteParameters = new SqlParameter[]
+                    {
+                        new SqlParameter("@Job_Id", jobId)
+                    };
+
+                    DbHelper.ExecuteStoredProcedureNonQuery("DeleteJobEquipment", deleteParameters);
+                }
+
+
+                // Add the new equipment records
+                foreach (DataGridViewRow row in dgvJobEquipment.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        SqlParameter[] parameters = new SqlParameter[]
+                        {
+                            new SqlParameter("@Job_Id", jobId),
+                            new SqlParameter("@Equipment_Id", row.Cells[0].Value)
+                        };
+
+                        DbHelper.ExecuteStoredProcedureNonQuery("AddJobEquipment", parameters);
+                    }
+                }
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
+            }
+        }
+
+        private void UpdateJob()
+        {
+            try
+            {
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@Job_Id", _jobId),
+                    new SqlParameter("@Client_Id", cmbClient.SelectedValue),
+                    new SqlParameter("@Employee_Number", cmbEmployee.SelectedValue),
+                    new SqlParameter("@Start_Date_Time", dtpStartDate.Value),
+                    new SqlParameter("@End_Date_Time", dtpEndDate.Checked ? dtpEndDate.Value : (object)DBNull.Value),
+                    new SqlParameter("@Job_Description", txtDescription.Text)
+                };
+
+                // Use the DbHelper class to execute the stored procedure
+                DbHelper.ExecuteStoredProcedureNonQuery("UpdateJob", parameters);
+
+                SaveJobEquipment(_jobId, false);
+
+                // Show a success message
+                MessageBox.Show("Job updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Close the form
+                Close();
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
+            }
         }
 
         private void dgvEquipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -215,6 +292,11 @@ namespace CMPG223_Project
             //only remove row if it contains a record
             if (dgvJobEquipment.Rows[e.RowIndex].Cells[0].Value != null)
                 dgvJobEquipment.Rows.RemoveAt(e.RowIndex);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            loadAllEquipment();
         }
     }
 }
