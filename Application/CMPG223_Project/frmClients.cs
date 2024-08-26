@@ -32,7 +32,7 @@ namespace CMPG223_Project
                 DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchClients", "Clients ", parameters);
 
                 dgvClients.DataSource = ds;
-                dgvClients.DataMember = "SearchClients";
+                dgvClients.DataMember = "Clients";
             }
 
             catch (SqlException ex)

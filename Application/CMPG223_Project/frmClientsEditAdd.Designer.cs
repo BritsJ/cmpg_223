@@ -39,16 +39,16 @@ namespace CMPG223_Project
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtClientCode = new System.Windows.Forms.TextBox();
-            this.txtPhysicalAddress = new System.Windows.Forms.TextBox();
-            this.txtBusinessName = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
-            this.chkIsActive = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtBusinessName = new System.Windows.Forms.TextBox();
+            this.txtPhysicalAddress = new System.Windows.Forms.TextBox();
+            this.txtClientCode = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,63 +151,15 @@ namespace CMPG223_Project
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information ";
             // 
-            // txtClientCode
+            // btnClose
             // 
-            this.txtClientCode.Location = new System.Drawing.Point(148, 43);
-            this.txtClientCode.Name = "txtClientCode";
-            this.txtClientCode.Size = new System.Drawing.Size(184, 20);
-            this.txtClientCode.TabIndex = 8;
-            // 
-            // txtPhysicalAddress
-            // 
-            this.txtPhysicalAddress.Location = new System.Drawing.Point(148, 193);
-            this.txtPhysicalAddress.Name = "txtPhysicalAddress";
-            this.txtPhysicalAddress.Size = new System.Drawing.Size(184, 20);
-            this.txtPhysicalAddress.TabIndex = 9;
-            // 
-            // txtBusinessName
-            // 
-            this.txtBusinessName.Location = new System.Drawing.Point(148, 160);
-            this.txtBusinessName.Name = "txtBusinessName";
-            this.txtBusinessName.Size = new System.Drawing.Size(184, 20);
-            this.txtBusinessName.TabIndex = 10;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(148, 132);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(184, 20);
-            this.txtEmail.TabIndex = 11;
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(148, 100);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(184, 20);
-            this.txtPhoneNumber.TabIndex = 12;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(148, 69);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(184, 20);
-            this.txtName.TabIndex = 13;
-            // 
-            // txtAdditionalInfo
-            // 
-            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 222);
-            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
-            this.txtAdditionalInfo.Size = new System.Drawing.Size(184, 20);
-            this.txtAdditionalInfo.TabIndex = 15;
-            // 
-            // chkIsActive
-            // 
-            this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Location = new System.Drawing.Point(148, 251);
-            this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(15, 14);
-            this.chkIsActive.TabIndex = 16;
-            this.chkIsActive.UseVisualStyleBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(148, 304);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 33);
+            this.btnClose.TabIndex = 18;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -219,15 +171,63 @@ namespace CMPG223_Project
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnClose
+            // chkIsActive
             // 
-            this.btnClose.Location = new System.Drawing.Point(148, 304);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 33);
-            this.btnClose.TabIndex = 18;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.chkIsActive.AutoSize = true;
+            this.chkIsActive.Location = new System.Drawing.Point(148, 251);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(15, 14);
+            this.chkIsActive.TabIndex = 16;
+            this.chkIsActive.UseVisualStyleBackColor = true;
+            // 
+            // txtAdditionalInfo
+            // 
+            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 222);
+            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
+            this.txtAdditionalInfo.Size = new System.Drawing.Size(184, 20);
+            this.txtAdditionalInfo.TabIndex = 15;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(148, 69);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(184, 20);
+            this.txtName.TabIndex = 13;
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(148, 100);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(184, 20);
+            this.txtPhoneNumber.TabIndex = 12;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(148, 132);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(184, 20);
+            this.txtEmail.TabIndex = 11;
+            // 
+            // txtBusinessName
+            // 
+            this.txtBusinessName.Location = new System.Drawing.Point(148, 160);
+            this.txtBusinessName.Name = "txtBusinessName";
+            this.txtBusinessName.Size = new System.Drawing.Size(184, 20);
+            this.txtBusinessName.TabIndex = 10;
+            // 
+            // txtPhysicalAddress
+            // 
+            this.txtPhysicalAddress.Location = new System.Drawing.Point(148, 193);
+            this.txtPhysicalAddress.Name = "txtPhysicalAddress";
+            this.txtPhysicalAddress.Size = new System.Drawing.Size(184, 20);
+            this.txtPhysicalAddress.TabIndex = 9;
+            // 
+            // txtClientCode
+            // 
+            this.txtClientCode.Location = new System.Drawing.Point(148, 43);
+            this.txtClientCode.Name = "txtClientCode";
+            this.txtClientCode.Size = new System.Drawing.Size(184, 20);
+            this.txtClientCode.TabIndex = 8;
             // 
             // frmClientsEditAdd
             // 
@@ -238,6 +238,7 @@ namespace CMPG223_Project
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClientsEditAdd";
             this.Text = "frmClientsEditAdd";
+            this.Load += new System.EventHandler(this.frmClientsEditAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
