@@ -49,32 +49,35 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(186, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Search for:";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(189, 40);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtSearch.Location = new System.Drawing.Point(186, 44);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 20);
+            this.txtSearch.Size = new System.Drawing.Size(204, 23);
             this.txtSearch.TabIndex = 4;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 160);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 205);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(625, 288);
+            this.dataGridView1.Size = new System.Drawing.Size(674, 270);
             this.dataGridView1.TabIndex = 3;
             // 
             // btnReport
             // 
-            this.btnReport.Location = new System.Drawing.Point(189, 122);
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnReport.Location = new System.Drawing.Point(12, 168);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(100, 32);
+            this.btnReport.Size = new System.Drawing.Size(134, 31);
             this.btnReport.TabIndex = 6;
             this.btnReport.Text = "Generate Report";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -82,24 +85,26 @@
             // 
             // cbSort
             // 
+            this.cbSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbSort.FormattingEnabled = true;
             this.cbSort.Items.AddRange(new object[] {
             "Alphabetically",
             "By ID",
             "Quantity(Ascending)",
             "Quantity(Descending)"});
-            this.cbSort.Location = new System.Drawing.Point(189, 86);
+            this.cbSort.Location = new System.Drawing.Point(186, 106);
             this.cbSort.Name = "cbSort";
-            this.cbSort.Size = new System.Drawing.Size(121, 21);
+            this.cbSort.Size = new System.Drawing.Size(204, 24);
             this.cbSort.TabIndex = 7;
             this.cbSort.SelectedIndexChanged += new System.EventHandler(this.cbSort_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 67);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(186, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(63, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Sort by:";
             // 
@@ -112,7 +117,7 @@
             this.groupBox1.Controls.Add(this.rbClients);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(168, 142);
+            this.groupBox1.Size = new System.Drawing.Size(168, 150);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show all:";
@@ -120,9 +125,10 @@
             // rbJobs
             // 
             this.rbJobs.AutoSize = true;
-            this.rbJobs.Location = new System.Drawing.Point(6, 120);
+            this.rbJobs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rbJobs.Location = new System.Drawing.Point(6, 119);
             this.rbJobs.Name = "rbJobs";
-            this.rbJobs.Size = new System.Drawing.Size(47, 17);
+            this.rbJobs.Size = new System.Drawing.Size(61, 24);
             this.rbJobs.TabIndex = 14;
             this.rbJobs.TabStop = true;
             this.rbJobs.Text = "Jobs";
@@ -132,9 +138,10 @@
             // rbSales
             // 
             this.rbSales.AutoSize = true;
-            this.rbSales.Location = new System.Drawing.Point(6, 97);
+            this.rbSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rbSales.Location = new System.Drawing.Point(6, 94);
             this.rbSales.Name = "rbSales";
-            this.rbSales.Size = new System.Drawing.Size(51, 17);
+            this.rbSales.Size = new System.Drawing.Size(67, 24);
             this.rbSales.TabIndex = 13;
             this.rbSales.TabStop = true;
             this.rbSales.Text = "Sales";
@@ -144,9 +151,10 @@
             // rbStock
             // 
             this.rbStock.AutoSize = true;
-            this.rbStock.Location = new System.Drawing.Point(6, 74);
+            this.rbStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rbStock.Location = new System.Drawing.Point(6, 69);
             this.rbStock.Name = "rbStock";
-            this.rbStock.Size = new System.Drawing.Size(53, 17);
+            this.rbStock.Size = new System.Drawing.Size(68, 24);
             this.rbStock.TabIndex = 12;
             this.rbStock.TabStop = true;
             this.rbStock.Text = "Stock";
@@ -156,9 +164,10 @@
             // rbEmployees
             // 
             this.rbEmployees.AutoSize = true;
-            this.rbEmployees.Location = new System.Drawing.Point(6, 51);
+            this.rbEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rbEmployees.Location = new System.Drawing.Point(6, 44);
             this.rbEmployees.Name = "rbEmployees";
-            this.rbEmployees.Size = new System.Drawing.Size(76, 17);
+            this.rbEmployees.Size = new System.Drawing.Size(105, 24);
             this.rbEmployees.TabIndex = 11;
             this.rbEmployees.TabStop = true;
             this.rbEmployees.Text = "Employees";
@@ -168,9 +177,10 @@
             // rbClients
             // 
             this.rbClients.AutoSize = true;
-            this.rbClients.Location = new System.Drawing.Point(6, 28);
+            this.rbClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rbClients.Location = new System.Drawing.Point(6, 19);
             this.rbClients.Name = "rbClients";
-            this.rbClients.Size = new System.Drawing.Size(56, 17);
+            this.rbClients.Size = new System.Drawing.Size(75, 24);
             this.rbClients.TabIndex = 10;
             this.rbClients.TabStop = true;
             this.rbClients.Text = "Clients";
@@ -179,9 +189,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(537, 117);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClose.Location = new System.Drawing.Point(552, 481);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 32);
+            this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -191,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 460);
+            this.ClientSize = new System.Drawing.Size(712, 526);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridView1);

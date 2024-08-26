@@ -39,17 +39,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.txtCheckedOut = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.chkCanceled = new System.Windows.Forms.CheckBox();
+            this.numQtyOut = new System.Windows.Forms.NumericUpDown();
+            this.numQty = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numQtyOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 219);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSave.Location = new System.Drawing.Point(22, 247);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(126, 34);
+            this.btnSave.Size = new System.Drawing.Size(134, 31);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -57,9 +60,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(555, 219);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClose.Location = new System.Drawing.Point(612, 247);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 34);
+            this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -68,112 +72,123 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(24, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(132, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Equipment Code:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 56);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(24, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(55, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Name:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(263, 13);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(393, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 99);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label4.Location = new System.Drawing.Point(24, 122);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Quantity:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 141);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label5.Location = new System.Drawing.Point(24, 164);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.Size = new System.Drawing.Size(134, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Quantity Checked out:";
+            this.label5.Text = "Qty Checked Out:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 183);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label6.Location = new System.Drawing.Point(24, 206);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.Size = new System.Drawing.Size(56, 20);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Is active:";
+            this.label6.Text = "Active:";
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(140, 13);
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtCode.Location = new System.Drawing.Point(164, 36);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 20);
+            this.txtCode.Size = new System.Drawing.Size(158, 23);
             this.txtCode.TabIndex = 8;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(140, 56);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtName.Location = new System.Drawing.Point(164, 79);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.Size = new System.Drawing.Size(158, 23);
             this.txtName.TabIndex = 9;
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Location = new System.Drawing.Point(140, 99);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
-            this.txtQuantity.TabIndex = 10;
-            // 
-            // txtCheckedOut
-            // 
-            this.txtCheckedOut.Location = new System.Drawing.Point(140, 141);
-            this.txtCheckedOut.Name = "txtCheckedOut";
-            this.txtCheckedOut.Size = new System.Drawing.Size(100, 20);
-            this.txtCheckedOut.TabIndex = 11;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(332, 10);
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtDescription.Location = new System.Drawing.Point(397, 36);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(349, 132);
+            this.txtDescription.Size = new System.Drawing.Size(349, 151);
             this.txtDescription.TabIndex = 13;
             // 
             // chkCanceled
             // 
             this.chkCanceled.AutoSize = true;
-            this.chkCanceled.Location = new System.Drawing.Point(140, 183);
+            this.chkCanceled.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.chkCanceled.Location = new System.Drawing.Point(164, 210);
             this.chkCanceled.Name = "chkCanceled";
-            this.chkCanceled.Size = new System.Drawing.Size(66, 17);
+            this.chkCanceled.Size = new System.Drawing.Size(15, 14);
             this.chkCanceled.TabIndex = 14;
-            this.chkCanceled.Text = "Is active";
             this.chkCanceled.UseVisualStyleBackColor = true;
+            // 
+            // numQtyOut
+            // 
+            this.numQtyOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numQtyOut.Location = new System.Drawing.Point(164, 164);
+            this.numQtyOut.Name = "numQtyOut";
+            this.numQtyOut.Size = new System.Drawing.Size(158, 23);
+            this.numQtyOut.TabIndex = 15;
+            // 
+            // numQty
+            // 
+            this.numQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numQty.Location = new System.Drawing.Point(164, 123);
+            this.numQty.Name = "numQty";
+            this.numQty.Size = new System.Drawing.Size(158, 23);
+            this.numQty.TabIndex = 16;
             // 
             // frmEquipmentAddEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 265);
+            this.ClientSize = new System.Drawing.Size(781, 300);
+            this.Controls.Add(this.numQty);
+            this.Controls.Add(this.numQtyOut);
             this.Controls.Add(this.chkCanceled);
             this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.txtCheckedOut);
-            this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label6);
@@ -187,6 +202,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEquipmentAddEdit";
             this.Text = "Equipment Maintainance";
+            this.Load += new System.EventHandler(this.frmEquipmentAddEdit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numQtyOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numQty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,9 +222,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.TextBox txtCheckedOut;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.CheckBox chkCanceled;
+        private System.Windows.Forms.NumericUpDown numQtyOut;
+        private System.Windows.Forms.NumericUpDown numQty;
     }
 }

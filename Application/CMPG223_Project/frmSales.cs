@@ -153,5 +153,10 @@ namespace CMPG223_Project
         {
             Close();
         }
+
+        private void cmbClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

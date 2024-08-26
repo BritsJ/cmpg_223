@@ -59,7 +59,7 @@
             // 
             this.btnclose.Location = new System.Drawing.Point(676, 395);
             this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(112, 35);
+            this.btnclose.Size = new System.Drawing.Size(134, 31);
             this.btnclose.TabIndex = 5;
             this.btnclose.Text = "Close";
             this.btnclose.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             this.btnedit.Enabled = false;
             this.btnedit.Location = new System.Drawing.Point(125, 395);
             this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(112, 35);
+            this.btnedit.Size = new System.Drawing.Size(134, 31);
             this.btnedit.TabIndex = 4;
             this.btnedit.Text = "Edit";
             this.btnedit.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             // 
             this.btnadd.Location = new System.Drawing.Point(7, 395);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(112, 35);
+            this.btnadd.Size = new System.Drawing.Size(134, 31);
             this.btnadd.TabIndex = 3;
             this.btnadd.Text = "Add";
             this.btnadd.UseVisualStyleBackColor = true;

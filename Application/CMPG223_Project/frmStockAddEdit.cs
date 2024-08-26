@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Windows.Forms;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
-using System.Xml.Linq;
 
 namespace CMPG223_Project
 {
@@ -19,6 +12,7 @@ namespace CMPG223_Project
         public frmStockAddEdit(int stockID)
         {
             InitializeComponent();
+            LoadSubcategories();
             this.stockID = stockID;
 
             if(stockID != 0)
@@ -44,9 +38,10 @@ namespace CMPG223_Project
                         txtName.Text = reader["Stock_Name"].ToString();
                         txtDescription.Text = reader["Stock_Description"].ToString();
                         purchaseDatePicker.Value = (DateTime)reader["Purchase_Date"];
-                        txtPurchase.Text = reader["Purchase_Price"].ToString();
-                        txtSelling.Text = reader["Selling_Price"].ToString();
-                        txtQuantity.Text = reader["Quantity"].ToString();
+                        numPPrice.Value = (Decimal)reader["Purchase_Price"];
+                        NumSPrice.Value = (Decimal)reader["Selling_Price"];
+                        numQty.Value = (Int32)reader["Quantity"];
+                        cmbSubcategory.SelectedValue = (Int32)reader["Subcategory_Id"];
                     }
                 }
             }
@@ -66,9 +61,10 @@ namespace CMPG223_Project
                     new SqlParameter("@Stock_Name", txtName.Text),
                     new SqlParameter("@Stock_Description", txtDescription.Text),
                     new SqlParameter("@Purchase_Date", purchaseDatePicker.Value),
-                    new SqlParameter("@Purchase_Price", txtPurchase.Text),
-                    new SqlParameter("@Selling_Price", txtSelling.Text),
-                    new SqlParameter("@Quantity", txtQuantity.Text)
+                    new SqlParameter("@Purchase_Price",  numPPrice.Value),
+                    new SqlParameter("@Selling_Price", NumSPrice.Value),
+                    new SqlParameter("@Quantity", numQty.Value),
+                    new SqlParameter("@Subcategory_Id", cmbSubcategory.SelectedValue)
                 };
 
                 DbHelper.ExecuteStoredProcedureNonQuery("AddStock", parameters);
@@ -93,9 +89,10 @@ namespace CMPG223_Project
                     new SqlParameter("@Stock_Name", txtName.Text),
                     new SqlParameter("@Stock_Description", txtDescription.Text),
                     new SqlParameter("@Purchase_Date", purchaseDatePicker.Value),
-                    new SqlParameter("@Purchase_Price", txtPurchase.Text),
-                    new SqlParameter("@Selling_Price", txtSelling.Text),
-                    new SqlParameter("@Quantity", txtQuantity.Text)
+                    new SqlParameter("@Purchase_Price",  numPPrice.Value),
+                    new SqlParameter("@Selling_Price", NumSPrice.Value),
+                    new SqlParameter("@Quantity", numQty.Value),
+                    new SqlParameter("@Subcategory_Id", cmbSubcategory.SelectedValue)
                 };
 
                 DbHelper.ExecuteStoredProcedureNonQuery("UpdateStock", parameters);
@@ -125,6 +122,40 @@ namespace CMPG223_Project
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cmbSubcategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmStockAddEdit_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void LoadSubcategories()
+        {
+            try
+            {
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@SearchTerm", "")
+                };
+
+                // Use the DbHelper class to execute the stored procedure and get the DataSet
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchSubcategories", "subcategories", parameters);
+
+                // Bind the DataSet to the combo box
+                cmbSubcategory.DataSource = ds.Tables[0];
+                cmbSubcategory.DisplayMember = "Subcategory_Code";
+                cmbSubcategory.ValueMember = "Subcategory_Id";
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message);
+            }
         }
     }
 }

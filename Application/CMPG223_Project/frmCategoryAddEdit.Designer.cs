@@ -47,9 +47,9 @@
             this.lblCanceled.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCanceled.Location = new System.Drawing.Point(12, 136);
             this.lblCanceled.Name = "lblCanceled";
-            this.lblCanceled.Size = new System.Drawing.Size(65, 20);
+            this.lblCanceled.Size = new System.Drawing.Size(52, 20);
             this.lblCanceled.TabIndex = 76;
-            this.lblCanceled.Text = "IsActive";
+            this.lblCanceled.Text = "Active";
             // 
             // chkCanceled
             // 

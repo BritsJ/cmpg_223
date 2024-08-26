@@ -112,9 +112,8 @@
             this.chkactive.AutoSize = true;
             this.chkactive.Location = new System.Drawing.Point(409, 196);
             this.chkactive.Name = "chkactive";
-            this.chkactive.Size = new System.Drawing.Size(63, 17);
+            this.chkactive.Size = new System.Drawing.Size(15, 14);
             this.chkactive.TabIndex = 22;
-            this.chkactive.Text = "isActive";
             this.chkactive.UseVisualStyleBackColor = true;
             // 
             // chkadmin
@@ -122,9 +121,8 @@
             this.chkadmin.AutoSize = true;
             this.chkadmin.Location = new System.Drawing.Point(408, 160);
             this.chkadmin.Name = "chkadmin";
-            this.chkadmin.Size = new System.Drawing.Size(62, 17);
+            this.chkadmin.Size = new System.Drawing.Size(15, 14);
             this.chkadmin.TabIndex = 21;
-            this.chkadmin.Text = "isAdmin";
             this.chkadmin.UseVisualStyleBackColor = true;
             // 
             // label12
@@ -295,7 +293,7 @@
             // 
             this.btnSave.Location = new System.Drawing.Point(12, 285);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(108, 29);
+            this.btnSave.Size = new System.Drawing.Size(134, 31);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -303,9 +301,9 @@
             // 
             // btnclose
             // 
-            this.btnclose.Location = new System.Drawing.Point(143, 285);
+            this.btnclose.Location = new System.Drawing.Point(553, 285);
             this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(108, 29);
+            this.btnclose.Size = new System.Drawing.Size(134, 31);
             this.btnclose.TabIndex = 2;
             this.btnclose.Text = "Close";
             this.btnclose.UseVisualStyleBackColor = true;
