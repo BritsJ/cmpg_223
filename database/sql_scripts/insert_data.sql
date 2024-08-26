@@ -18,10 +18,12 @@ INSERT INTO [dbo].[CLIENT] (Client_Code, Contact_Person_Name, Business_Name, Pho
 VALUES (1001, 'John Doe', 'Electrical Supplies Inc.', '123-456-7890', 'johndoe@electricalsupplies.com', '123 Electric Avenue', 'Frequent Buyer', 1),
        (1002, 'Jane Smith', 'Lighting Solutions', '987-654-3210', 'janesmith@lightingsolutions.com', '456 Bright Street', 'Preferred Client', 1);
 
--- Insert records into EMPLOYEE
-INSERT INTO [dbo].[EMPLOYEE] (Id_Number, First_Name, Middle_Name, Last_Name, Hire_Date, Phone_Number, Email_Address, Physical_Address)
-VALUES ('EMP001', 'Michael', 'T.', 'Johnson', '2023-01-15', '555-123-4567', 'mjohnson@electricalstore.com', '789 Main Street'),
-       ('EMP002', 'Emily', 'R.', 'Davis', '2023-02-20', '555-987-6543', 'edavis@electricalstore.com', '321 Oak Avenue');
+-- Insert dummy data into the EMPLOYEE table
+INSERT INTO [koosieSeDatabase].[dbo].[EMPLOYEE]
+    ([Id_Number], [First_Name], [Middle_Name], [Last_Name], [Hire_Date], [Phone_Number], [Email_Address], [Physical_Address], [Username], [PasswordHash], [IsAdmin], [IsActive])
+VALUES
+    ('ID2345678901', 'Jane', 'B.', 'Smith', '2022-11-23', '555-0102', 'jane.smith@example.com', '456 Oak Avenue', 'test', 'test', 0, 1),
+    ('ID5678901234', 'Alice', 'E.', 'Taylor', '2023-05-12', '555-0105', 'alice.taylor@example.com', '202 Birch Lane', 'admin', 'admin', 1, 1);
 
 -- Insert records into EQUIPMENT
 INSERT INTO [dbo].[EQUIPMENT] (Equipment_Code, Name, Description, Quantity, Quantity_Checked_Out, Is_Active)

@@ -1,180 +1,205 @@
 USE [koosieSeDatabase]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateSubcategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateSubcategory]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateSubcategory]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateStock]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateStock]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateStock]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateSaleItem]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateSaleItem]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateSaleItem]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateSale]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateSale]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateSale]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateJob]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateJob]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateJob]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateEquipment]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateEmployee]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateEmployee]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateEmployee]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateClient]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateClient]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateClient]
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateCategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateCategory]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[UpdateCategory]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchSubcategories]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchSubcategories]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchSubcategories]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchStocksSales]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchStocksSales]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchStocksSales]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchStocks]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchStocks]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchStocks]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchSales]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchSales]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchSales]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchSaleItems]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchSaleItems]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchSaleItems]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchJobs]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchJobs]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchJobs]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchJobEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchJobEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchJobEquipment]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchEquipment]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchEmployees]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchEmployees]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchEmployees]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchClients]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchClients]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchClients]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchCategories]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchCategories]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[SearchCategories]
 GO
 
-/****** Object:  StoredProcedure [dbo].[InsertJob]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[rptStock]    Script Date: 2024/08/25 22:00:02 ******/
+DROP PROCEDURE [dbo].[rptStock]
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptSales]    Script Date: 2024/08/25 22:00:02 ******/
+DROP PROCEDURE [dbo].[rptSales]
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptJobs]    Script Date: 2024/08/25 22:00:02 ******/
+DROP PROCEDURE [dbo].[rptJobs]
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptEmployees]    Script Date: 2024/08/25 22:00:02 ******/
+DROP PROCEDURE [dbo].[rptEmployees]
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptClients]    Script Date: 2024/08/25 22:00:02 ******/
+DROP PROCEDURE [dbo].[rptClients]
+GO
+
+/****** Object:  StoredProcedure [dbo].[InsertJob]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[InsertJob]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetStockById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetStockById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetStockById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetSaleItemById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetSaleItemById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetSaleItemById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetSaleById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetSaleById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetSaleById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetJobEquipmentByJobId]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetJobEquipmentByJobId]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetJobEquipmentByJobId]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetJobById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetJobById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetJobById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetEquipmentById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetEquipmentById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetEquipmentById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetEmployeeById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetEmployeeById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetEmployeeById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetClientById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetClientById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetClientById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetCategoryById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetCategoryById]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetCategoryById]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetAllEmployees]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetAllEmployees]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[GetAllEmployees]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AuthenticateUser]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[DeleteJobEquipment]    Script Date: 2024/08/25 22:00:02 ******/
+DROP PROCEDURE [dbo].[DeleteJobEquipment]
+GO
+
+/****** Object:  StoredProcedure [dbo].[AuthenticateUser]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AuthenticateUser]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddSubcategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddSubcategory]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddSubcategory]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddStock]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddStock]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddStock]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddSaleItem]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddSaleItem]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddSaleItem]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddSale]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddSale]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddSale]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddJobEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddJobEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddJobEquipment]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddJob]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddJob]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddJob]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddEquipment]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddEmployee]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddEmployee]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddEmployee]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddClient]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddClient]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddClient]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/25 22:00:02 ******/
 DROP PROCEDURE [dbo].[AddCategory]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddCategory]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -195,12 +220,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddClient]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddClient]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -225,12 +251,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddEmployee]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddEmployee]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 CREATE PROCEDURE [dbo].[AddEmployee]
@@ -257,12 +284,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[AddEquipment]
     @Equipment_Code INT,
@@ -291,45 +319,38 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddJob]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddJob]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-
-
--- Add a new job record and return the Job_Id
 CREATE PROCEDURE [dbo].[AddJob]
-    @Employee_Number INT,
     @Client_Id INT,
+    @Employee_Number INT,
     @Start_Date_Time DATETIME,
-    @End_Date_Time DATETIME,
-    @Job_Description VARCHAR(255)
+    @End_Date_Time DATETIME = NULL,
+    @Job_Description VARCHAR(255),
+    @NewJob_Id INT OUTPUT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO [dbo].[JOB] (Employee_Number, Client_Id, Start_Date_Time, End_Date_Time, Job_Description)
-    VALUES (@Employee_Number, @Client_Id, @Start_Date_Time, @End_Date_Time, @Job_Description);
+    INSERT INTO [dbo].[JOB] (Client_Id, Employee_Number, Start_Date_Time, End_Date_Time, Job_Description)
+    VALUES (@Client_Id, @Employee_Number, @Start_Date_Time, @End_Date_Time, @Job_Description);
 
-
+    SET @NewJob_Id = SCOPE_IDENTITY();
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddJobEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddJobEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-
-
--- Add a new job equipment record and return the Job_Equipment_Id
 CREATE PROCEDURE [dbo].[AddJobEquipment]
     @Job_Id INT,
     @Equipment_Id INT
@@ -339,17 +360,16 @@ BEGIN
 
     INSERT INTO [dbo].[JOB_EQUIPMENT] (Job_Id, Equipment_Id)
     VALUES (@Job_Id, @Equipment_Id);
-
-
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddSale]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddSale]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -371,12 +391,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddSaleItem]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddSaleItem]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -403,12 +424,13 @@ END
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddStock]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddStock]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -433,12 +455,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddSubcategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AddSubcategory]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -470,12 +493,13 @@ BEGIN
 END;
 GO
 
-/****** Object:  StoredProcedure [dbo].[AuthenticateUser]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[AuthenticateUser]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -497,12 +521,31 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetAllEmployees]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[DeleteJobEquipment]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+CREATE PROCEDURE [dbo].[DeleteJobEquipment]
+    @Job_Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM [dbo].[JOB_EQUIPMENT]
+    WHERE Job_Id = @Job_Id;
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetAllEmployees]    Script Date: 2024/08/25 22:00:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 
 CREATE PROCEDURE [dbo].[GetAllEmployees]
 AS
@@ -527,12 +570,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetCategoryById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetCategoryById]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -552,12 +596,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetClientById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetClientById]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -581,12 +626,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetEmployeeById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetEmployeeById]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[GetEmployeeById]
     @Employee_Number INT
@@ -612,12 +658,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetEquipmentById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetEquipmentById]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[GetEquipmentById]
     @Equipment_Id INT
@@ -637,12 +684,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetJobById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetJobById]    Script Date: 2024/08/25 22:00:02 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[GetJobById]
     @Job_Id INT
@@ -663,12 +711,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetJobEquipmentByJobId]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetJobEquipmentByJobId]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 Create PROCEDURE [dbo].[GetJobEquipmentByJobId]
     @Job_Id INT
@@ -687,12 +736,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetSaleById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetSaleById]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -712,12 +762,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetSaleItemById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetSaleItemById]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -738,12 +789,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetStockById]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[GetStockById]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -767,12 +819,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[InsertJob]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[InsertJob]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- Insert a new job
 CREATE PROCEDURE [dbo].[InsertJob]
@@ -790,12 +843,184 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchCategories]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[rptClients]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+CREATE PROCEDURE [dbo].[rptClients]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Client_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Client';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Client_Id LIKE N''%' + @SearchValue + '%''
+                    OR Client_Code LIKE N''%' + @SearchValue + '%''
+                    OR Contact_Person_Name LIKE N''%' + @SearchValue + '%''
+                    OR Business_Name LIKE N''%' + @SearchValue + '%''
+                    OR Phone_Number LIKE N''%' + @SearchValue + '%''
+                    OR Email_Address LIKE N''%' + @SearchValue + '%''
+                    OR Physical_Address LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptEmployees]    Script Date: 2024/08/25 22:00:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[rptEmployees]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Employee_Number',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Employee';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Employee_Number LIKE N''%' + @SearchValue + '%''
+                     OR Id_Number LIKE N''%' + @SearchValue + '%''
+                     OR First_Name LIKE N''%' + @SearchValue + '%''
+                     OR Middle_Name LIKE N''%' + @SearchValue + '%''
+                     OR Last_Name LIKE N''%' + @SearchValue + '%''
+                     OR Hire_Date LIKE N''%' + @SearchValue + '%''
+                     OR Phone_Number LIKE N''%' + @SearchValue + '%''
+                     OR Email_Address LIKE N''%' + @SearchValue + '%''
+                     OR Physical_Address LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptJobs]    Script Date: 2024/08/25 22:00:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[rptJobs]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Job_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Job';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Job_Id LIKE N''%' + @SearchValue + '%''
+                    OR Employee_Number LIKE N''%' + @SearchValue + '%''
+                    OR Client_Id LIKE N''%' + @SearchValue + '%''
+                    OR Start_Date_Time LIKE N''%' + @SearchValue + '%''
+                    OR End_Date_Time LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptSales]    Script Date: 2024/08/25 22:00:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[rptSales]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Sale_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Sale';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Sale_Id LIKE N''%' + @SearchValue + '%''
+                    OR Employee_Number LIKE N''%' + @SearchValue + '%''
+                    OR Sale_Date_Time LIKE N''%' + @SearchValue + '%''
+                    OR Cash_Received LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[rptStock]    Script Date: 2024/08/25 22:00:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[rptStock]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Stock_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Stock';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Stock_Id LIKE N''%' + @SearchValue + '%''
+                    OR Stock_Code LIKE N''%' + @SearchValue + '%''
+                    OR Stock_Name LIKE N''%' + @SearchValue + '%''
+                    OR Purchase_Date LIKE N''%' + @SearchValue + '%''
+                    OR Purchase_Price LIKE N''%' + @SearchValue + '%''
+                    OR Selling_Price LIKE N''%' + @SearchValue + '%''
+                    OR Quantity LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[SearchCategories]    Script Date: 2024/08/25 22:00:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 
 
 
@@ -818,12 +1043,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchClients]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchClients]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -854,12 +1080,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchEmployees]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchEmployees]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 CREATE PROCEDURE [dbo].[SearchEmployees]
@@ -879,12 +1106,13 @@ END;
 
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchEquipment]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[SearchEquipment]
     @SearchTerm VARCHAR(255)
@@ -909,12 +1137,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchJobEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchJobEquipment]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 Create PROCEDURE [dbo].[SearchJobEquipment]
     @SearchTerm VARCHAR(255)
@@ -937,12 +1166,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchJobs]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchJobs]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -969,12 +1199,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchSaleItems]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchSaleItems]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -996,12 +1227,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchSales]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchSales]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1022,12 +1254,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchStocks]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchStocks]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1057,12 +1290,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchStocksSales]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchStocksSales]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1084,12 +1318,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchSubcategories]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[SearchSubcategories]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1117,12 +1352,13 @@ BEGIN
 END;
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateCategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateCategory]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1145,12 +1381,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateClient]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateClient]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1181,12 +1418,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateEmployee]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateEmployee]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[UpdateEmployee]
     @Employee_Number INT,
@@ -1223,12 +1461,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateEquipment]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateEquipment]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROCEDURE [dbo].[UpdateEquipment]
     @Equipment_Id INT,
@@ -1264,19 +1503,17 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateJob]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateJob]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
--- Update an existing job
 CREATE PROCEDURE [dbo].[UpdateJob]
     @Job_Id INT,
-    @Employee_Number INT,
     @Client_Id INT,
+    @Employee_Number INT,
     @Start_Date_Time DATETIME,
     @End_Date_Time DATETIME = NULL,
     @Job_Description VARCHAR(255)
@@ -1285,8 +1522,8 @@ BEGIN
     SET NOCOUNT ON;
 
     UPDATE [dbo].[JOB]
-    SET Employee_Number = @Employee_Number,
-        Client_Id = @Client_Id,
+    SET Client_Id = @Client_Id,
+        Employee_Number = @Employee_Number,
         Start_Date_Time = @Start_Date_Time,
         End_Date_Time = @End_Date_Time,
         Job_Description = @Job_Description
@@ -1294,12 +1531,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateSale]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateSale]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1321,12 +1559,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateSaleItem]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateSaleItem]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1350,12 +1589,13 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateStock]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateStock]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -1386,7 +1626,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[UpdateSubcategory]    Script Date: 2024/08/22 21:32:36 ******/
+/****** Object:  StoredProcedure [dbo].[UpdateSubcategory]    Script Date: 2024/08/25 22:00:03 ******/
 SET ANSI_NULLS ON
 GO
 

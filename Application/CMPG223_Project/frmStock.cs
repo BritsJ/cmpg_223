@@ -54,7 +54,7 @@ namespace CMPG223_Project
                 DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchStocks", "Stock", parameters);
 
                 dgvStock.DataSource = ds;
-                dgvStock.DataMember = "Categories";
+                dgvStock.DataMember = "Stock";
             }
             catch (SqlException sqlException)
             {

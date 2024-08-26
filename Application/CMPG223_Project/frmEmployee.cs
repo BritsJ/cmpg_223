@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
@@ -38,22 +36,7 @@ namespace CMPG223_Project
 
         private void LoadEmployees()
         {
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtsearch.Text)
-                };
-
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchEmployees", "Employees", parameters);
-
-                dgvEmployees.DataSource = ds;
-                dgvEmployees.DataMember = "Employees";
-            }
-            catch(SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            DataGridViewHelper.LoadDataGrid(dgvEmployees, txtsearch.Text, "SearchEmployees", "Employees");
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)

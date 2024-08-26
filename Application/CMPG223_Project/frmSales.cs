@@ -57,25 +57,7 @@ namespace CMPG223_Project
 
         private void LoadStockItems()
         {
-            try
-            {
-                // Define the parameters for the stored procedure
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtSearch.Text)
-                };
-
-                // Use the DbHelper class to execute the stored procedure and get the DataSet
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchStocksSales", "Stock", parameters);
-
-                // Bind the DataSet to the DataGridView
-                dgvStock.DataSource = ds;
-                dgvStock.DataMember = "Stock";
-            }
-            catch (SqlException sqlException)
-            {
-                MessageBox.Show(sqlException.Message);
-            }
+            DataGridViewHelper.LoadDataGrid(dgvStock, txtSearch.Text, "SearchStocksSales", "Stock");
         }
 
         private void dgvStock_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
