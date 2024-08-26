@@ -85,9 +85,9 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(837, 328);
+            this.btnClose.Location = new System.Drawing.Point(821, 328);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(118, 34);
+            this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 18;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             this.btnAddJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddJob.Location = new System.Drawing.Point(11, 328);
             this.btnAddJob.Name = "btnAddJob";
-            this.btnAddJob.Size = new System.Drawing.Size(118, 34);
+            this.btnAddJob.Size = new System.Drawing.Size(134, 31);
             this.btnAddJob.TabIndex = 17;
             this.btnAddJob.Text = "Add";
             this.btnAddJob.UseVisualStyleBackColor = true;
@@ -107,9 +107,9 @@
             // btnEditJob
             // 
             this.btnEditJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditJob.Location = new System.Drawing.Point(135, 328);
+            this.btnEditJob.Location = new System.Drawing.Point(151, 328);
             this.btnEditJob.Name = "btnEditJob";
-            this.btnEditJob.Size = new System.Drawing.Size(121, 34);
+            this.btnEditJob.Size = new System.Drawing.Size(134, 31);
             this.btnEditJob.TabIndex = 16;
             this.btnEditJob.Text = "Edit";
             this.btnEditJob.UseVisualStyleBackColor = true;

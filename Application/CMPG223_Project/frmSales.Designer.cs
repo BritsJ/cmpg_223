@@ -47,18 +47,21 @@
             // 
             // cmbClient
             // 
+            this.cmbClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cmbClient.FormattingEnabled = true;
-            this.cmbClient.Location = new System.Drawing.Point(92, 23);
+            this.cmbClient.Location = new System.Drawing.Point(93, 26);
             this.cmbClient.Name = "cmbClient";
-            this.cmbClient.Size = new System.Drawing.Size(343, 21);
+            this.cmbClient.Size = new System.Drawing.Size(343, 24);
             this.cmbClient.TabIndex = 1;
+            this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(14, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Client:";
             // 
@@ -84,9 +87,10 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtSearch.Location = new System.Drawing.Point(76, 31);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(688, 20);
+            this.txtSearch.Size = new System.Drawing.Size(688, 23);
             this.txtSearch.TabIndex = 8;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -124,9 +128,10 @@
             // 
             // btnPay
             // 
+            this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnPay.Location = new System.Drawing.Point(17, 558);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(113, 41);
+            this.btnPay.Size = new System.Drawing.Size(134, 31);
             this.btnPay.TabIndex = 12;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
@@ -134,9 +139,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(136, 558);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClose.Location = new System.Drawing.Point(680, 558);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(113, 41);
+            this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -146,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 615);
+            this.ClientSize = new System.Drawing.Size(836, 615);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.Stock);

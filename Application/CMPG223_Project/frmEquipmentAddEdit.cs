@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
@@ -61,8 +54,8 @@ namespace CMPG223_Project
                         txtCode.Text = reader["Equipment_Code"].ToString();
                         txtName.Text = reader["Name"].ToString();
                         txtDescription.Text = reader["Description"].ToString();
-                        txtQuantity.Text = reader["Quantity"].ToString();
-                        txtCheckedOut.Text = reader["Quantity_Checked_Out"].ToString();
+                        numQty.Value = (Int32)reader["Quantity"];
+                        numQty.Value = (Int32)reader["Quantity_Checked_Out"];
                         chkCanceled.Checked = Convert.ToBoolean(reader["Is_Active"]);
                     }
                 }
@@ -82,8 +75,8 @@ namespace CMPG223_Project
                     new SqlParameter("@Equipment_Code", txtCode.Text),
                     new SqlParameter("@Name", txtName.Text),
                     new SqlParameter("@Description", txtDescription.Text),
-                    new SqlParameter("@Quantity", txtQuantity.Text),
-                    new SqlParameter("@Quantity_Checked_Out", txtCheckedOut.Text),
+                    new SqlParameter("@Quantity", numQty.Value),
+                    new SqlParameter("@Quantity_Checked_Out", numQtyOut.Value),
                     new SqlParameter("@Is_Active", chkCanceled.Checked)
                 };
 
@@ -108,8 +101,8 @@ namespace CMPG223_Project
                     new SqlParameter("@Equipment_Code", txtCode.Text),
                     new SqlParameter("@Name", txtName.Text),
                     new SqlParameter("@Description", txtDescription.Text),
-                    new SqlParameter("@Quantity", txtQuantity.Text),
-                    new SqlParameter("@Quantity_Checked_Out", txtCheckedOut.Text),
+                    new SqlParameter("@Quantity", numQty.Value),
+                    new SqlParameter("@Quantity_Checked_Out", numQtyOut.Value),
                     new SqlParameter("@Is_Active", chkCanceled.Checked)
                 };
 
@@ -121,6 +114,11 @@ namespace CMPG223_Project
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void frmEquipmentAddEdit_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -171,5 +171,12 @@ namespace CMPG223_Project
             frmJob.MdiParent = this;
             frmJob.Show();
         }
+
+        private void subcategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSubcategory frmSubcategory = new frmSubcategory();
+            frmSubcategory.MdiParent = this;
+            frmSubcategory.Show();
+        }
     }
 }

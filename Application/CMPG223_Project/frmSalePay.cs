@@ -22,33 +22,26 @@ namespace CMPG223_Project
 
         private void frmSalePopup_Load(object sender, EventArgs e)
         {
-            this.txtTotal.Text = total.ToString();
+            txtTotal.Text = total.ToString();
         }
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
-            // validate that the user has entered numbers value in the text box
-            if (decimal.TryParse(txtAmount.Text, out decimal amount))
+            decimal amount = numAmount.Value;
+            //validate that the amount is greater than the total
+            if (amount < total)
             {
-                //validate that the amount is greater than the total
-                if (amount < total)
-                {
-                    MessageBox.Show("The amount entered is less than the total");
-                    return;
-                }
-
-                // calculate the change
-                decimal change = amount - total;
-                txtChange.Text = change.ToString();
-
-                amount_out = amount;
-                amount_change = change;
-
+                MessageBox.Show("The amount entered is less than the total");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Please enter a valid number in the amount field");
-            }
+
+            // calculate the change
+            decimal change = amount - total;
+            txtChange.Text = change.ToString();
+
+            amount_out = amount;
+            amount_change = change;
+
         }
     }
 }

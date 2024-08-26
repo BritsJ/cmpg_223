@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace CMPG223_Project
 {
     public partial class frmSubcategoryAddEdit : Form
@@ -15,8 +9,11 @@ namespace CMPG223_Project
         public int subcategoryId { get; set; }
         public frmSubcategoryAddEdit(int subcategoryId)
         {
-            this.subcategoryId = subcategoryId;
+            
             InitializeComponent();
+            LoadCategories();
+            this.subcategoryId = subcategoryId;
+
 
             if (subcategoryId != 0)
             {
@@ -59,7 +56,13 @@ namespace CMPG223_Project
             try
             {
 
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchCategory", "Category");
+                // Define the parameters for the stored procedure
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@SearchTerm", "")
+                };
+
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchCategories", "Category", parameters);
 
                 
                 cmbCategory.DataSource = ds.Tables[0];
@@ -123,7 +126,7 @@ namespace CMPG223_Project
         }
         private void frmSubcategoryAddEdit_Load(object sender, EventArgs e)
         {
-            LoadCategories();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

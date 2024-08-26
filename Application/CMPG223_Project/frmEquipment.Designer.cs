@@ -64,26 +64,29 @@
             // 
             // txtsearch
             // 
-            this.txtsearch.Location = new System.Drawing.Point(54, 25);
+            this.txtsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtsearch.Location = new System.Drawing.Point(71, 25);
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(151, 20);
+            this.txtsearch.Size = new System.Drawing.Size(324, 23);
             this.txtsearch.TabIndex = 1;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Seach:";
             // 
             // btnAdd
             // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnAdd.Location = new System.Drawing.Point(13, 387);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(110, 32);
+            this.btnAdd.Size = new System.Drawing.Size(134, 31);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -92,9 +95,10 @@
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(144, 387);
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnEdit.Location = new System.Drawing.Point(153, 387);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(110, 32);
+            this.btnEdit.Size = new System.Drawing.Size(134, 31);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -102,9 +106,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(686, 387);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClose.Location = new System.Drawing.Point(662, 387);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(110, 32);
+            this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;

@@ -120,14 +120,12 @@ namespace CMPG223_Project
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(25, 251);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 13);
+            this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Is Active :";
+            this.label8.Text = "Active :";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnClose);
-            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.chkIsActive);
             this.groupBox1.Controls.Add(this.txtAdditionalInfo);
             this.groupBox1.Controls.Add(this.txtName);
@@ -146,16 +144,16 @@ namespace CMPG223_Project
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(741, 383);
+            this.groupBox1.Size = new System.Drawing.Size(741, 286);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information ";
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(148, 304);
+            this.btnClose.Location = new System.Drawing.Point(619, 304);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 33);
+            this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 18;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -163,9 +161,9 @@ namespace CMPG223_Project
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(28, 304);
+            this.btnSave.Location = new System.Drawing.Point(12, 304);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(90, 33);
+            this.btnSave.Size = new System.Drawing.Size(134, 31);
             this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -233,7 +231,9 @@ namespace CMPG223_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(768, 358);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClientsEditAdd";

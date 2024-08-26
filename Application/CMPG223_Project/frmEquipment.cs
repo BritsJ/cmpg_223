@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
@@ -21,6 +13,8 @@ namespace CMPG223_Project
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmEquipmentAddEdit frm = new frmEquipmentAddEdit(0);
+            frm.ShowDialog();
+            LoadEquipment();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -47,7 +41,7 @@ namespace CMPG223_Project
         private void frmEquipment_Load(object sender, EventArgs e)
         {
             LoadEquipment();
-            btnAdd.Enabled = false;
+            btnEdit.Enabled = false;
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
