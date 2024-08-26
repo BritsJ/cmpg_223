@@ -111,7 +111,7 @@ namespace CMPG223_Project
                 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                     new SqlParameter("@Client_Code",txtClientCode.Text),
+                    new SqlParameter("@Client_Code",txtClientCode.Text),
                     new SqlParameter("@Contact_Person_Name",txtName.Text),
                     new SqlParameter("@Business_Name",txtBusinessName.Text),
                     new SqlParameter("@Phone_Number",txtPhoneNumber.Text),
@@ -131,6 +131,9 @@ namespace CMPG223_Project
             }
         }
 
-      
+        private void frmClientsEditAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

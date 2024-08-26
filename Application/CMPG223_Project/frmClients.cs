@@ -1,5 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 
 namespace CMPG223_Project
@@ -14,7 +22,23 @@ namespace CMPG223_Project
 
         private void LoadClients()
         {
-            DataGridViewHelper.LoadDataGrid(dgvClients, txtSearch.Text, "SearchClients", "Clients");
+
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@SearchTerm", txtSearch.Text)
+                };
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchClients", "Clients ", parameters);
+
+                dgvClients.DataSource = ds;
+                dgvClients.DataMember = "Clients";
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -57,6 +81,5 @@ namespace CMPG223_Project
         {
             btnEdit.Enabled = true;
         }
-
     }
 }

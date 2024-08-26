@@ -17,9 +17,15 @@ namespace CMPG223_Project
         {
             InitializeComponent();
             this.userId = userId;
-            cmbCategory.SelectedIndexChanged += cmbCategory_SelectedIndexChanged;
+            
         }
-        private void LoadCatgory()
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void LoadSubcategories()
         {
             try
             {
@@ -30,73 +36,58 @@ namespace CMPG223_Project
                 };
 
                 
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchCategory", "Category", parameters);
+                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchSubcategories", "Subcategories", parameters);
 
                 
-                cmbCategory.DataSource = ds.Tables[0];
-                cmbCategory.DisplayMember = "Category_Name";
-                cmbCategory.ValueMember = "Category_Id";
+                dgvSubcategory.DataSource = ds;
+                dgvSubcategory.DataMember = "Subcategories";
             }
             catch (SqlException sqlException)
             {
                 MessageBox.Show(sqlException.Message);
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            LoadCatgory();
-        }
-
-        private void dgvSubcategory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //
-        }
-
-        private void frmSubcategory_Load(object sender, EventArgs e)
-        {
-            LoadCatgory();
-        }
-        private void LoadSubcategories()
-        {
-            try
-            {
-                
-                int selectedCategoryId = (int)cmbCategory.SelectedValue;
-
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@CategoryId", selectedCategoryId)
-                };
-
-                
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("GetSubcategoriesByCategory", "Subcategories", parameters);
-                dgvSubcategory.DataSource = ds.Tables[0];
-            }
-            catch (SqlException sqlException)
-            {
-                MessageBox.Show(sqlException.Message);
-            }
-        }
-
-        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadSubcategories();
         }
 
+        private void dgvSubcategory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEdit.Enabled = true;
+        }
+
+        private void frmSubcategory_Load(object sender, EventArgs e)
+        {
+            LoadSubcategories();
+            btnEdit.Enabled = false;
+        }
+        
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           //
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
+        {
+            
+
+            frmSubcategoryAddEdit frmAddEdit = new frmSubcategoryAddEdit(0);
+            frmAddEdit.ShowDialog();
+            LoadSubcategories();
+            
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             int subcategoryId = Convert.ToInt32(dgvSubcategory.SelectedRows[0].Cells[0].Value);
 
             frmSubcategoryAddEdit frmAddEdit = new frmSubcategoryAddEdit(subcategoryId);
             frmAddEdit.ShowDialog();
             LoadSubcategories();
-            
+            btnEdit.Enabled = false;
+            btnAdd.Enabled = true;
         }
     }
 }
