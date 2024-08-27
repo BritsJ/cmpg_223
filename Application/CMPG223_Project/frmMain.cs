@@ -1,4 +1,15 @@
-﻿using System;
+﻿///
+//Group Members	
+//Jaco Brits	38980274
+//Marcel Volschenk	33451524
+//Hendrik Diedericks	45973466
+//Karina Visagie	40878554
+//Ryno Williamson	47492058
+///
+
+
+
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -18,6 +29,10 @@ namespace CMPG223_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadSettings();
+
+            //Link tooltip to the toolstrip item
+            toolTip1.SetToolTip(menuStrip1, "Login to access premium features");
+
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,6 +192,13 @@ namespace CMPG223_Project
             frmSubcategory frmSubcategory = new frmSubcategory();
             frmSubcategory.MdiParent = this;
             frmSubcategory.Show();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Popup frmhelp
+            frmHelp frmHelp = new frmHelp();
+            frmHelp.ShowDialog();
         }
     }
 }
