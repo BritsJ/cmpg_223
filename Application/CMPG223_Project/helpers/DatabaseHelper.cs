@@ -174,6 +174,25 @@ namespace CMPG223_Project
                 }
             }
         }
+
+        // ExecuteStoredProcedureScalar
+        public static object ExecuteStoredProcedureScalar(string storedProcedureName, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand(storedProcedureName, conn))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    conn.Open();
+                    return command.ExecuteScalar();
+                }
+            }
+        }
     }
 
 }

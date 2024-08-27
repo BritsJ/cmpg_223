@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 
@@ -16,23 +14,8 @@ namespace CMPG223_Project
 
         private void LoadClients()
         {
+            DataGridViewHelper.LoadDataGrid(dgvClients, txtSearch.Text, "SearchClients", "Clients");
 
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtSearch.Text)
-                };
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchClients", "Clients ", parameters);
-
-                dgvClients.DataSource = ds;
-                dgvClients.DataMember = "Clients";
-            }
-
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -55,8 +38,8 @@ namespace CMPG223_Project
             frmClientsEditAdd frmClientsAddEdit = new frmClientsEditAdd(clientId);
             frmClientsAddEdit.ShowDialog();
             LoadClients();
-            btnAdd.Enabled = false;
-            btnEdit.Enabled = true;
+            btnAdd.Enabled = true;
+            btnEdit.Enabled = false;
         }
 
         private void frmClients_Load(object sender, EventArgs e)
@@ -71,7 +54,9 @@ namespace CMPG223_Project
             Close();
         }
 
-        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnEdit.Enabled = true;
         }
