@@ -1,7 +1,147 @@
 USE [koosieSeDatabase]
 GO
 
-/****** Object:  Table [dbo].[CATEGORY]    Script Date: 2024/08/20 21:15:29 ******/
+ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [Stock_Selling_Price_min]
+GO
+
+ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [Stock_Purchase_Price_min]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Sale_Item_Quantity_min]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Sale_Item_Price_min]
+GO
+
+ALTER TABLE [dbo].[SALE] DROP CONSTRAINT [Sale_Cash_Received_min]
+GO
+
+ALTER TABLE [dbo].[EQUIPMENT] DROP CONSTRAINT [Equipment_Quantity_min]
+GO
+
+ALTER TABLE [dbo].[SUBCATEGORY] DROP CONSTRAINT [FK_Subcategory_Category]
+GO
+
+ALTER TABLE [dbo].[SUBCATEGORY] DROP CONSTRAINT [Cat_Subcat_fk]
+GO
+
+ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [Sub_Stock_fk]
+GO
+
+ALTER TABLE [dbo].[STOCK] DROP CONSTRAINT [FK_Stock_Subcategory]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Stock_Sale_Item_fk]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [Sale_Sale_Item_fk]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [FK_SaleItem_Stock]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] DROP CONSTRAINT [FK_SaleItem_Sale]
+GO
+
+ALTER TABLE [dbo].[SALE] DROP CONSTRAINT [Sale_Emp_fk]
+GO
+
+ALTER TABLE [dbo].[SALE] DROP CONSTRAINT [FK_Sale_Employee]
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT] DROP CONSTRAINT [Job_Job_Equip_fk]
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT] DROP CONSTRAINT [FK_JobEquipment_Job]
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT] DROP CONSTRAINT [FK_JobEquipment_Equipment]
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT] DROP CONSTRAINT [Equip_Job_fk]
+GO
+
+ALTER TABLE [dbo].[JOB] DROP CONSTRAINT [FK_Job_Employee]
+GO
+
+ALTER TABLE [dbo].[JOB] DROP CONSTRAINT [FK_Job_Client]
+GO
+
+ALTER TABLE [dbo].[JOB] DROP CONSTRAINT [Employee_Job_fk]
+GO
+
+ALTER TABLE [dbo].[JOB] DROP CONSTRAINT [Client_Job_fk]
+GO
+
+ALTER TABLE [dbo].[SUBCATEGORY] DROP CONSTRAINT [DF__SUBCATEGO__Is_Ac__2DB1C7EE]
+GO
+
+ALTER TABLE [dbo].[EQUIPMENT] DROP CONSTRAINT [DF__EQUIPMENT__Is_Ac__2CBDA3B5]
+GO
+
+ALTER TABLE [dbo].[EMPLOYEE] DROP CONSTRAINT [DF__EMPLOYEE__IsActi__2022C2A6]
+GO
+
+ALTER TABLE [dbo].[EMPLOYEE] DROP CONSTRAINT [DF__EMPLOYEE__IsAdmi__1F2E9E6D]
+GO
+
+ALTER TABLE [dbo].[CLIENT] DROP CONSTRAINT [DF__CLIENT__Is_Activ__2BC97F7C]
+GO
+
+ALTER TABLE [dbo].[CATEGORY] DROP CONSTRAINT [DF__CATEGORY__Is_Act__2AD55B43]
+GO
+
+/****** Object:  Table [dbo].[SUBCATEGORY]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SUBCATEGORY]') AND type in (N'U'))
+DROP TABLE [dbo].[SUBCATEGORY]
+GO
+
+/****** Object:  Table [dbo].[STOCK]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[STOCK]') AND type in (N'U'))
+DROP TABLE [dbo].[STOCK]
+GO
+
+/****** Object:  Table [dbo].[SALE_ITEM]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SALE_ITEM]') AND type in (N'U'))
+DROP TABLE [dbo].[SALE_ITEM]
+GO
+
+/****** Object:  Table [dbo].[SALE]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SALE]') AND type in (N'U'))
+DROP TABLE [dbo].[SALE]
+GO
+
+/****** Object:  Table [dbo].[JOB_EQUIPMENT]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[JOB_EQUIPMENT]') AND type in (N'U'))
+DROP TABLE [dbo].[JOB_EQUIPMENT]
+GO
+
+/****** Object:  Table [dbo].[JOB]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[JOB]') AND type in (N'U'))
+DROP TABLE [dbo].[JOB]
+GO
+
+/****** Object:  Table [dbo].[EQUIPMENT]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EQUIPMENT]') AND type in (N'U'))
+DROP TABLE [dbo].[EQUIPMENT]
+GO
+
+/****** Object:  Table [dbo].[EMPLOYEE]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EMPLOYEE]') AND type in (N'U'))
+DROP TABLE [dbo].[EMPLOYEE]
+GO
+
+/****** Object:  Table [dbo].[CLIENT]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CLIENT]') AND type in (N'U'))
+DROP TABLE [dbo].[CLIENT]
+GO
+
+/****** Object:  Table [dbo].[CATEGORY]    Script Date: 2024/08/27 06:09:01 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CATEGORY]') AND type in (N'U'))
+DROP TABLE [dbo].[CATEGORY]
+GO
+
+/****** Object:  Table [dbo].[CATEGORY]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,15 +157,11 @@ CREATE TABLE [dbo].[CATEGORY](
 PRIMARY KEY CLUSTERED 
 (
 	[Category_Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [Category_Code_uk] UNIQUE NONCLUSTERED 
-(
-	[Category_Code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[CLIENT]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[CLIENT]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -34,7 +170,7 @@ GO
 
 CREATE TABLE [dbo].[CLIENT](
 	[Client_Id] [int] IDENTITY(1,1) NOT NULL,
-	[Client_Code] [int] NOT NULL,
+	[Client_Code] [varchar](10) NOT NULL,
 	[Contact_Person_Name] [varchar](35) NOT NULL,
 	[Business_Name] [varchar](35) NOT NULL,
 	[Phone_Number] [varchar](15) NOT NULL,
@@ -53,7 +189,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[EMPLOYEE]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[EMPLOYEE]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -93,7 +229,7 @@ UNIQUE NONCLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[EQUIPMENT]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[EQUIPMENT]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -102,7 +238,7 @@ GO
 
 CREATE TABLE [dbo].[EQUIPMENT](
 	[Equipment_Id] [int] IDENTITY(1,1) NOT NULL,
-	[Equipment_Code] [int] NOT NULL,
+	[Equipment_Code] [varchar](10) NOT NULL,
 	[Name] [varchar](35) NOT NULL,
 	[Description] [varchar](255) NOT NULL,
 	[Quantity] [int] NOT NULL,
@@ -119,7 +255,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[JOB]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[JOB]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -140,7 +276,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[JOB_EQUIPMENT]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[JOB_EQUIPMENT]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -158,7 +294,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[SALE]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[SALE]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -177,7 +313,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[SALE_ITEM]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[SALE_ITEM]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -197,7 +333,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[STOCK]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[STOCK]    Script Date: 2024/08/27 06:09:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -225,7 +361,7 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
-/****** Object:  Table [dbo].[SUBCATEGORY]    Script Date: 2024/08/20 21:15:29 ******/
+/****** Object:  Table [dbo].[SUBCATEGORY]    Script Date: 2024/08/27 06:09:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -282,11 +418,43 @@ GO
 ALTER TABLE [dbo].[JOB] CHECK CONSTRAINT [Employee_Job_fk]
 GO
 
+ALTER TABLE [dbo].[JOB]  WITH CHECK ADD  CONSTRAINT [FK_Job_Client] FOREIGN KEY([Client_Id])
+REFERENCES [dbo].[CLIENT] ([Client_Id])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[JOB] CHECK CONSTRAINT [FK_Job_Client]
+GO
+
+ALTER TABLE [dbo].[JOB]  WITH CHECK ADD  CONSTRAINT [FK_Job_Employee] FOREIGN KEY([Employee_Number])
+REFERENCES [dbo].[EMPLOYEE] ([Employee_Number])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[JOB] CHECK CONSTRAINT [FK_Job_Employee]
+GO
+
 ALTER TABLE [dbo].[JOB_EQUIPMENT]  WITH CHECK ADD  CONSTRAINT [Equip_Job_fk] FOREIGN KEY([Equipment_Id])
 REFERENCES [dbo].[EQUIPMENT] ([Equipment_Id])
 GO
 
 ALTER TABLE [dbo].[JOB_EQUIPMENT] CHECK CONSTRAINT [Equip_Job_fk]
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT]  WITH CHECK ADD  CONSTRAINT [FK_JobEquipment_Equipment] FOREIGN KEY([Equipment_Id])
+REFERENCES [dbo].[EQUIPMENT] ([Equipment_Id])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT] CHECK CONSTRAINT [FK_JobEquipment_Equipment]
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT]  WITH CHECK ADD  CONSTRAINT [FK_JobEquipment_Job] FOREIGN KEY([Job_Id])
+REFERENCES [dbo].[JOB] ([Job_Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[JOB_EQUIPMENT] CHECK CONSTRAINT [FK_JobEquipment_Job]
 GO
 
 ALTER TABLE [dbo].[JOB_EQUIPMENT]  WITH CHECK ADD  CONSTRAINT [Job_Job_Equip_fk] FOREIGN KEY([Job_Id])
@@ -296,11 +464,35 @@ GO
 ALTER TABLE [dbo].[JOB_EQUIPMENT] CHECK CONSTRAINT [Job_Job_Equip_fk]
 GO
 
+ALTER TABLE [dbo].[SALE]  WITH CHECK ADD  CONSTRAINT [FK_Sale_Employee] FOREIGN KEY([Employee_Number])
+REFERENCES [dbo].[EMPLOYEE] ([Employee_Number])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[SALE] CHECK CONSTRAINT [FK_Sale_Employee]
+GO
+
 ALTER TABLE [dbo].[SALE]  WITH CHECK ADD  CONSTRAINT [Sale_Emp_fk] FOREIGN KEY([Employee_Number])
 REFERENCES [dbo].[EMPLOYEE] ([Employee_Number])
 GO
 
 ALTER TABLE [dbo].[SALE] CHECK CONSTRAINT [Sale_Emp_fk]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM]  WITH CHECK ADD  CONSTRAINT [FK_SaleItem_Sale] FOREIGN KEY([Sale_Id])
+REFERENCES [dbo].[SALE] ([Sale_Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] CHECK CONSTRAINT [FK_SaleItem_Sale]
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM]  WITH CHECK ADD  CONSTRAINT [FK_SaleItem_Stock] FOREIGN KEY([Stock_Id])
+REFERENCES [dbo].[STOCK] ([Stock_Id])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[SALE_ITEM] CHECK CONSTRAINT [FK_SaleItem_Stock]
 GO
 
 ALTER TABLE [dbo].[SALE_ITEM]  WITH CHECK ADD  CONSTRAINT [Sale_Sale_Item_fk] FOREIGN KEY([Sale_Id])
@@ -317,6 +509,14 @@ GO
 ALTER TABLE [dbo].[SALE_ITEM] CHECK CONSTRAINT [Stock_Sale_Item_fk]
 GO
 
+ALTER TABLE [dbo].[STOCK]  WITH CHECK ADD  CONSTRAINT [FK_Stock_Subcategory] FOREIGN KEY([Subcategory_Id])
+REFERENCES [dbo].[SUBCATEGORY] ([Subcategory_Id])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[STOCK] CHECK CONSTRAINT [FK_Stock_Subcategory]
+GO
+
 ALTER TABLE [dbo].[STOCK]  WITH CHECK ADD  CONSTRAINT [Sub_Stock_fk] FOREIGN KEY([Subcategory_Id])
 REFERENCES [dbo].[SUBCATEGORY] ([Subcategory_Id])
 GO
@@ -329,6 +529,14 @@ REFERENCES [dbo].[CATEGORY] ([Category_Id])
 GO
 
 ALTER TABLE [dbo].[SUBCATEGORY] CHECK CONSTRAINT [Cat_Subcat_fk]
+GO
+
+ALTER TABLE [dbo].[SUBCATEGORY]  WITH CHECK ADD  CONSTRAINT [FK_Subcategory_Category] FOREIGN KEY([Category_Id])
+REFERENCES [dbo].[CATEGORY] ([Category_Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[SUBCATEGORY] CHECK CONSTRAINT [FK_Subcategory_Category]
 GO
 
 ALTER TABLE [dbo].[EQUIPMENT]  WITH CHECK ADD  CONSTRAINT [Equipment_Quantity_min] CHECK  (([Quantity]>=(0)))

@@ -20,6 +20,7 @@ namespace CMPG223_Project
         {
             frmEmployeeAddEdit frmEmployeeAddEdit = new frmEmployeeAddEdit(0);
             frmEmployeeAddEdit.ShowDialog();
+            LoadEmployees();
         }
 
         private void btnedit_Click(object sender, EventArgs e)
@@ -52,6 +53,11 @@ namespace CMPG223_Project
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnedit.Enabled = true;
+        }
+
+        private void txtsearch_TextChanged_1(object sender, EventArgs e)
+        {
+            LoadEmployees();
         }
     }
 }

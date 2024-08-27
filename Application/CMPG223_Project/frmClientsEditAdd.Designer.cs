@@ -39,8 +39,6 @@ namespace CMPG223_Project
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -49,78 +47,88 @@ namespace CMPG223_Project
             this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.txtPhysicalAddress = new System.Windows.Forms.TextBox();
             this.txtClientCode = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 78);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(26, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.Location = new System.Drawing.Point(25, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Phone Number : ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 50);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(25, 39);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Client Code : ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.Location = new System.Drawing.Point(25, 135);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.Size = new System.Drawing.Size(60, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Email : ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 193);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label5.Location = new System.Drawing.Point(473, 126);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.Size = new System.Drawing.Size(137, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Physical Address: ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 222);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label6.Location = new System.Drawing.Point(473, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.Size = new System.Drawing.Size(123, 20);
             this.label6.TabIndex = 5;
             this.label6.Text = "Additional Info : ";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 163);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label7.Location = new System.Drawing.Point(25, 167);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 13);
+            this.label7.Size = new System.Drawing.Size(132, 20);
             this.label7.TabIndex = 6;
             this.label7.Text = "Business Name : ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 251);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label8.Location = new System.Drawing.Point(26, 201);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.Size = new System.Drawing.Size(60, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "Active :";
             // 
@@ -144,101 +152,111 @@ namespace CMPG223_Project
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(741, 286);
+            this.groupBox1.Size = new System.Drawing.Size(741, 252);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information ";
             // 
+            // chkIsActive
+            // 
+            this.chkIsActive.AutoSize = true;
+            this.chkIsActive.Location = new System.Drawing.Point(168, 206);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(15, 14);
+            this.chkIsActive.TabIndex = 5;
+            this.chkIsActive.UseVisualStyleBackColor = true;
+            // 
+            // txtAdditionalInfo
+            // 
+            this.txtAdditionalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtAdditionalInfo.Location = new System.Drawing.Point(464, 39);
+            this.txtAdditionalInfo.Multiline = true;
+            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
+            this.txtAdditionalInfo.Size = new System.Drawing.Size(243, 72);
+            this.txtAdditionalInfo.TabIndex = 6;
+            // 
+            // txtName
+            // 
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtName.Location = new System.Drawing.Point(168, 71);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(230, 23);
+            this.txtName.TabIndex = 1;
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(168, 103);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(230, 23);
+            this.txtPhoneNumber.TabIndex = 2;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtEmail.Location = new System.Drawing.Point(168, 135);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(230, 23);
+            this.txtEmail.TabIndex = 3;
+            // 
+            // txtBusinessName
+            // 
+            this.txtBusinessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtBusinessName.Location = new System.Drawing.Point(168, 167);
+            this.txtBusinessName.Name = "txtBusinessName";
+            this.txtBusinessName.Size = new System.Drawing.Size(230, 23);
+            this.txtBusinessName.TabIndex = 4;
+            // 
+            // txtPhysicalAddress
+            // 
+            this.txtPhysicalAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtPhysicalAddress.Location = new System.Drawing.Point(464, 149);
+            this.txtPhysicalAddress.Multiline = true;
+            this.txtPhysicalAddress.Name = "txtPhysicalAddress";
+            this.txtPhysicalAddress.Size = new System.Drawing.Size(243, 72);
+            this.txtPhysicalAddress.TabIndex = 7;
+            // 
+            // txtClientCode
+            // 
+            this.txtClientCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txtClientCode.Location = new System.Drawing.Point(168, 39);
+            this.txtClientCode.Name = "txtClientCode";
+            this.txtClientCode.Size = new System.Drawing.Size(230, 23);
+            this.txtClientCode.TabIndex = 0;
+            // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(619, 304);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClose.Location = new System.Drawing.Point(619, 270);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 31);
-            this.btnClose.TabIndex = 18;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 304);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSave.Location = new System.Drawing.Point(12, 270);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(134, 31);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // chkIsActive
-            // 
-            this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Location = new System.Drawing.Point(148, 251);
-            this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(15, 14);
-            this.chkIsActive.TabIndex = 16;
-            this.chkIsActive.UseVisualStyleBackColor = true;
-            // 
-            // txtAdditionalInfo
-            // 
-            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 222);
-            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
-            this.txtAdditionalInfo.Size = new System.Drawing.Size(184, 20);
-            this.txtAdditionalInfo.TabIndex = 15;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(148, 69);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(184, 20);
-            this.txtName.TabIndex = 13;
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(148, 100);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(184, 20);
-            this.txtPhoneNumber.TabIndex = 12;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(148, 132);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(184, 20);
-            this.txtEmail.TabIndex = 11;
-            // 
-            // txtBusinessName
-            // 
-            this.txtBusinessName.Location = new System.Drawing.Point(148, 160);
-            this.txtBusinessName.Name = "txtBusinessName";
-            this.txtBusinessName.Size = new System.Drawing.Size(184, 20);
-            this.txtBusinessName.TabIndex = 10;
-            // 
-            // txtPhysicalAddress
-            // 
-            this.txtPhysicalAddress.Location = new System.Drawing.Point(148, 193);
-            this.txtPhysicalAddress.Name = "txtPhysicalAddress";
-            this.txtPhysicalAddress.Size = new System.Drawing.Size(184, 20);
-            this.txtPhysicalAddress.TabIndex = 9;
-            // 
-            // txtClientCode
-            // 
-            this.txtClientCode.Location = new System.Drawing.Point(148, 43);
-            this.txtClientCode.Name = "txtClientCode";
-            this.txtClientCode.Size = new System.Drawing.Size(184, 20);
-            this.txtClientCode.TabIndex = 8;
             // 
             // frmClientsEditAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 358);
+            this.ClientSize = new System.Drawing.Size(768, 324);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClientsEditAdd";
-            this.Text = "frmClientsEditAdd";
-            this.Load += new System.EventHandler(this.frmClientsEditAdd_Load);
+            this.Text = "Client Maintainance";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

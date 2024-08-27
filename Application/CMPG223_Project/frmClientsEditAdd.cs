@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace CMPG223_Project
 {
@@ -45,13 +39,13 @@ namespace CMPG223_Project
                     {
 
                         txtClientCode.Text= reader["Client_Code"].ToString();
-                        txtName.Text= reader["First_Name"].ToString();
+                        txtName.Text= reader["Contact_Person_Name"].ToString();
                         txtBusinessName.Text = reader["Business_Name"].ToString();
                         txtPhoneNumber.Text = reader["Phone_Number"].ToString();
                         txtEmail.Text = reader["Email_Address"].ToString();
                         txtPhysicalAddress.Text = reader["Physical_Address"].ToString();
                         txtAdditionalInfo.Text = reader["Additional_Info"].ToString();
-                        chkIsActive.Checked = Convert.ToBoolean(reader["IsActive"]);
+                        chkIsActive.Checked = Convert.ToBoolean(reader["Is_Active"]);
 
                     }
                 }
@@ -66,14 +60,23 @@ namespace CMPG223_Project
         {
             if (clientId != 0)
             {
-                UpdateClient();
+                if (IsValid())
+                {
+                    UpdateClient();
+                    Close();
+                }
+
             }
             else
             {
-                AddNewClient();
+                if (IsValid())
+                {
+                    AddNewClient();
+                    Close();
+                }
             }
 
-            Close();
+            
         }
 
         private void AddNewClient()
@@ -89,10 +92,8 @@ namespace CMPG223_Project
                     new SqlParameter("@Phone_Number",txtPhoneNumber.Text),
                     new SqlParameter("@Email_Address",txtEmail.Text),
                     new SqlParameter("@Physical_Address",txtPhysicalAddress.Text),
-                    new SqlParameter("@Additional_Info",chkIsActive.Text),
-                    new SqlParameter("@Is_Active",txtPhoneNumber.Text),
-                    
-
+                    new SqlParameter("@Additional_Info",txtAdditionalInfo.Text),
+                    new SqlParameter("@Is_Active",chkIsActive.Checked)
                 };
                 
                 DbHelper.ExecuteStoredProcedureNonQuery("AddClient", parameters);
@@ -104,6 +105,7 @@ namespace CMPG223_Project
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void UpdateClient()
         {
             try
@@ -111,14 +113,15 @@ namespace CMPG223_Project
                 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
+                    new SqlParameter("@Client_Id",clientId),
                     new SqlParameter("@Client_Code",txtClientCode.Text),
                     new SqlParameter("@Contact_Person_Name",txtName.Text),
                     new SqlParameter("@Business_Name",txtBusinessName.Text),
                     new SqlParameter("@Phone_Number",txtPhoneNumber.Text),
                     new SqlParameter("@Email_Address",txtEmail.Text),
                     new SqlParameter("@Physical_Address",txtPhysicalAddress.Text),
-                    new SqlParameter("@Additional_Info",chkIsActive.Text),
-                    new SqlParameter("@Is_Active",txtPhoneNumber.Text),
+                    new SqlParameter("@Additional_Info",txtAdditionalInfo.Text),
+                    new SqlParameter("@Is_Active",chkIsActive.Checked)
                 };
 
                 DbHelper.ExecuteStoredProcedureNonQuery("UpdateClient", parameters);
@@ -131,9 +134,25 @@ namespace CMPG223_Project
             }
         }
 
-        private void frmClientsEditAdd_Load(object sender, EventArgs e)
+        private bool IsValid()
+
         {
 
+            System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+
+            if (txtEmail.Text.Length > 0 && txtEmail.Text.Trim().Length != 0)
+            {
+                if (!rEmail.IsMatch(txtEmail.Text.Trim()))
+                {
+                    MessageBox.Show("Email not valid", "Validation", MessageBoxButtons.OK);
+                    txtEmail.SelectAll();
+                    return false;
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CMPG223_Project
@@ -36,7 +28,7 @@ namespace CMPG223_Project
                     new SqlParameter("@Employee_Number", EmployeeID)
                 };
 
-                using(SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetEmployeeByNumber",  sp))
+                using(SqlDataReader reader = DbHelper.ExecuteStoredProcedureReader("GetEmployeeById",  sp))
                 {
                     if(reader.Read())
                     {
@@ -129,16 +121,74 @@ namespace CMPG223_Project
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (employeeID != 0)
+            if (IsValid())
             {
-                UpdateEmployee();
-            }
-            else
-            {
-                AddNewEmployee();
+                if (employeeID != 0)
+                {
+                    UpdateEmployee();
+                }
+                else
+                {
+                    AddNewEmployee();
+                }
+
+                Close();
             }
 
+
+        }
+
+        private bool IsValid()
+        {
+            //Check if all fields are filled
+            if (txtID.Text == "" || txtFirstName.Text == "" || txtLastName.Text == "" || txtPhoneNumber.Text == "" || txtEmailAddress.Text == "" || txtPhysicalAdress.Text == "" || txtusername.Text == "" || txtpassword.Text == "")
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return false;
+            }
+
+            //Check if ID number is numeric
+            if (!int.TryParse(txtID.Text, out int id))
+            {
+                MessageBox.Show("ID number must be numeric.");
+                return false;
+            }
+
+            //check if username is unique
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                 new SqlParameter("Username", txtusername.Text)
+            };
+
+            if ((bool)DbHelper.ExecuteStoredProcedureScalar("CheckUsername", parameter))
+            {
+                MessageBox.Show("Username already exists.");
+                return false;
+            }
+
+            //validate email address
+            if (!txtEmailAddress.Text.Contains("@") || !txtEmailAddress.Text.Contains("."))
+            {
+                MessageBox.Show("Invalid email address.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void btnclose_Click(object sender, EventArgs e)
+        {
             Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkadmin_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
