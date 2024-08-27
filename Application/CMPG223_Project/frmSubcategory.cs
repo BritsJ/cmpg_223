@@ -20,19 +20,10 @@ namespace CMPG223_Project
         private void LoadSubcategories()
         {
             try
-            {
-                
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@SearchTerm", txtSearch.Text)
-                };
+            { 
+                DataGridViewHelper.LoadDataGrid(dgvSubcategory, txtSearch.Text, "SearchSubcategories", "Subcategories");
 
-                
-                DataSet ds = DbHelper.ExecuteStoredProcedureDataSet("SearchSubcategories", "Subcategories", parameters);
 
-                
-                dgvSubcategory.DataSource = ds;
-                dgvSubcategory.DataMember = "Subcategories";
             }
             catch (SqlException sqlException)
             {
