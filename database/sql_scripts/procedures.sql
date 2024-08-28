@@ -101,6 +101,9 @@ GO
 DROP PROCEDURE [dbo].[rptClients]
 GO
 
+DROP PROCEDURE [dbo].[rptEquipment]
+GO
+
 /****** Object:  StoredProcedure [dbo].[InsertJob]    Script Date: 2024/08/27 06:10:23 ******/
 DROP PROCEDURE [dbo].[InsertJob]
 GO
@@ -1072,6 +1075,37 @@ BEGIN
                     OR Purchase_Price LIKE N''%' + @SearchValue + '%''
                     OR Selling_Price LIKE N''%' + @SearchValue + '%''
                     OR Quantity LIKE N''%' + @SearchValue + '%''';
+    END
+    
+    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[rptEquipment]
+    @SearchValue NVARCHAR(100) = NULL,
+    @SortColumn NVARCHAR(50) = 'Equipment_Id',
+    @SortOrder NVARCHAR(4) = 'ASC'
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX);
+    
+    SET @SQL = N'SELECT * FROM Equipment';
+    
+    IF @SearchValue IS NOT NULL
+    BEGIN
+        SET @SQL += N' WHERE Equipment_Id LIKE N''%' + @SearchValue + '%''
+                    OR Equipment_Code LIKE N''%' + @SearchValue + '%''
+                    OR Name LIKE N''%' + @SearchValue + '%''
+                    OR Quantity LIKE N''%' + @SearchValue + '%''
+                    OR Quantity_Checked_Out LIKE N''%' + @SearchValue + '%''';
     END
     
     SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;

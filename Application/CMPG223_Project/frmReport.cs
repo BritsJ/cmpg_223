@@ -63,6 +63,10 @@ namespace CMPG223_Project
             {
                 UpdateComboBox(new string[] {"Sale_ID", "Employee_Number", "Sale_Date_Time", "Cash_Received" });
             }
+            else if (rbEquipment.Checked)
+            {
+                UpdateComboBox(new string[] { "Equipment_Id", "Name", "Quantity", "Quantity_Checked_Out" });
+            }
         }
 
         private void LoadData(string storedProcedureName)
@@ -106,6 +110,7 @@ namespace CMPG223_Project
             if (rbStock.Checked) return "rptStock";
             if (rbJobs.Checked) return "rptJobs";
             if (rbSales.Checked) return "rptSales";
+            if (rbEquipment.Checked) return "rptEquipment";
             return "";
         }
     }
