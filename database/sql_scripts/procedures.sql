@@ -927,24 +927,34 @@ CREATE PROCEDURE [dbo].[rptClients]
 AS
 BEGIN
     DECLARE @SQL NVARCHAR(MAX);
+    DECLARE @SearchFilter NVARCHAR(MAX) = '';
     
-    SET @SQL = N'SELECT * FROM Client';
+    -- Build the base SQL query
+    SET @SQL = N'SELECT c.Client_Id, c.Business_Name,
+                        COUNT(j.Job_Id) AS Total_Jobs,
+                        ISNULL(SUM(DATEDIFF(day, j.Start_Date_Time, j.End_Date_Time)), 0) AS Total_Job_Duration
+                FROM Client c
+                LEFT JOIN Job j ON c.Client_Id = j.Client_Id';
     
+    -- Apply search filter if @SearchValue is provided
     IF @SearchValue IS NOT NULL
     BEGIN
-        SET @SQL += N' WHERE Client_Id LIKE N''%' + @SearchValue + '%''
-                    OR Client_Code LIKE N''%' + @SearchValue + '%''
-                    OR Contact_Person_Name LIKE N''%' + @SearchValue + '%''
-                    OR Business_Name LIKE N''%' + @SearchValue + '%''
-                    OR Phone_Number LIKE N''%' + @SearchValue + '%''
-                    OR Email_Address LIKE N''%' + @SearchValue + '%''
-                    OR Physical_Address LIKE N''%' + @SearchValue + '%''';
+        SET @SearchFilter = N' WHERE c.Client_Id LIKE N''%' + @SearchValue + '%''
+                             OR c.Business_Name LIKE N''%' + @SearchValue + '%''';
     END
     
-    SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+    -- Append search filter to the base SQL query
+    SET @SQL = @SQL + @SearchFilter;
+    
+    -- Group by Client and apply sorting
+    SET @SQL = @SQL + N' GROUP BY c.Client_Id, c.Business_Name
+                        ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
+
+    -- Execute the dynamically built SQL statement
     EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
 END
 GO
+
 
 /****** Object:  StoredProcedure [dbo].[rptEmployees]    Script Date: 2024/08/27 06:10:23 ******/
 SET ANSI_NULLS ON
@@ -962,21 +972,21 @@ AS
 BEGIN
     DECLARE @SQL NVARCHAR(MAX);
     
-    SET @SQL = N'SELECT * FROM Employee';
+    SET @SQL = N'SELECT e.Employee_Number, e.First_Name, e.Last_Name, 
+                        COUNT(j.Job_ID) AS Total_Jobs,
+                        SUM(s.Cash_Received) AS Total_Sales
+                FROM Employee e
+                LEFT JOIN Job j ON e.Employee_Number = j.Employee_Number
+                LEFT JOIN Sale s ON e.Employee_Number = s.Employee_Number';
     
     IF @SearchValue IS NOT NULL
     BEGIN
-        SET @SQL += N' WHERE Employee_Number LIKE N''%' + @SearchValue + '%''
-                     OR Id_Number LIKE N''%' + @SearchValue + '%''
-                     OR First_Name LIKE N''%' + @SearchValue + '%''
-                     OR Middle_Name LIKE N''%' + @SearchValue + '%''
-                     OR Last_Name LIKE N''%' + @SearchValue + '%''
-                     OR Hire_Date LIKE N''%' + @SearchValue + '%''
-                     OR Phone_Number LIKE N''%' + @SearchValue + '%''
-                     OR Email_Address LIKE N''%' + @SearchValue + '%''
-                     OR Physical_Address LIKE N''%' + @SearchValue + '%''';
+        SET @SQL += N' WHERE e.Employee_Number LIKE N''%' + @SearchValue + '%''
+                     OR e.First_Name LIKE N''%' + @SearchValue + '%''
+                     OR e.Last_Name LIKE N''%' + @SearchValue + '%''';
     END
     
+    SET @SQL += N' GROUP BY e.Employee_Number, e.First_Name, e.Last_Name';
     SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
 
     EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
@@ -990,28 +1000,36 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 CREATE PROCEDURE [dbo].[rptJobs]
     @SearchValue NVARCHAR(100) = NULL,
-    @SortColumn NVARCHAR(50) = 'Job_Id',
+    @SortColumn NVARCHAR(50) = 'Client_Business_Name',
     @SortOrder NVARCHAR(4) = 'ASC'
 AS
 BEGIN
     DECLARE @SQL NVARCHAR(MAX);
-    
-    SET @SQL = N'SELECT * FROM Job';
-    
+
+    -- Define the base SQL query with joins and grouping
+    SET @SQL = N'SELECT 
+                    c.Business_Name AS Client_Business_Name, 
+                    j.Client_Id, 
+                    COUNT(j.Job_Id) AS Total_Jobs
+                FROM Job j
+                INNER JOIN Client c ON j.Client_Id = c.Client_Id';
+
+    -- Apply search filter if a search value is provided
     IF @SearchValue IS NOT NULL
     BEGIN
-        SET @SQL += N' WHERE Job_Id LIKE N''%' + @SearchValue + '%''
-                    OR Employee_Number LIKE N''%' + @SearchValue + '%''
-                    OR Client_Id LIKE N''%' + @SearchValue + '%''
-                    OR Start_Date_Time LIKE N''%' + @SearchValue + '%''
-                    OR End_Date_Time LIKE N''%' + @SearchValue + '%''';
+        SET @SQL += N' WHERE c.Business_Name LIKE N''%' + @SearchValue + '%''
+                     OR j.Job_Id LIKE N''%' + @SearchValue + '%''';
     END
-    
+
+    -- Group by Client_Id and Employee_Number to aggregate the data
+    SET @SQL += N' GROUP BY c.Business_Name, j.Client_Id';
+
+    -- Apply sorting based on user input
     SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
 
+    -- Execute the dynamic SQL query
     EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
 END
 GO
@@ -1026,30 +1044,26 @@ GO
 
 CREATE PROCEDURE [dbo].[rptSales]
     @SearchValue NVARCHAR(100) = NULL,
-    @SortColumn NVARCHAR(50) = 'Sale_Id',
+    @SortColumn NVARCHAR(50) = 'Employee_Number',
     @SortOrder NVARCHAR(4) = 'ASC'
 AS
 BEGIN
     DECLARE @SQL NVARCHAR(MAX);
     
-    SET @SQL = N'SELECT * FROM Sale';
+    SET @SQL = N'SELECT Employee_Number, COUNT(Sale_Id) AS Total_Sales, SUM(Cash_Received) AS Total_Revenue
+                FROM Sale';
     
     IF @SearchValue IS NOT NULL
     BEGIN
-        SET @SQL += N' WHERE Sale_Id LIKE N''%' + @SearchValue + '%''
-                    OR Employee_Number LIKE N''%' + @SearchValue + '%''
-                    OR Sale_Date_Time LIKE N''%' + @SearchValue + '%''
-                    OR Cash_Received LIKE N''%' + @SearchValue + '%''';
+        SET @SQL += N' WHERE Employee_Number LIKE N''%' + @SearchValue + '%''
+                     OR Sale_Id LIKE N''%' + @SearchValue + '%''';
     END
     
+    SET @SQL += N' GROUP BY Employee_Number';
     SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
 
     EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
 END
-GO
-
-/****** Object:  StoredProcedure [dbo].[rptStock]    Script Date: 2024/08/27 06:10:23 ******/
-SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
@@ -1058,27 +1072,36 @@ GO
 
 CREATE PROCEDURE [dbo].[rptStock]
     @SearchValue NVARCHAR(100) = NULL,
-    @SortColumn NVARCHAR(50) = 'Stock_Id',
+    @SortColumn NVARCHAR(50) = 'Stock_Code',
     @SortOrder NVARCHAR(4) = 'ASC'
 AS
 BEGIN
     DECLARE @SQL NVARCHAR(MAX);
     
-    SET @SQL = N'SELECT * FROM Stock';
+    -- Start building the SQL query
+    SET @SQL = N'SELECT Stock_Code, Stock_Name, 
+                        SUM(Quantity) AS Total_Quantity, 
+                        SUM(Purchase_Price * Quantity) AS Total_Purchase_Cost, 
+                        SUM(Selling_Price * Quantity) AS Total_Selling_Value
+                 FROM Stock';
     
-    IF @SearchValue IS NOT NULL
+    -- Add search functionality if a search value is provided
+    IF @SearchValue IS NOT NULL AND @SearchValue <> ''
     BEGIN
-        SET @SQL += N' WHERE Stock_Id LIKE N''%' + @SearchValue + '%''
-                    OR Stock_Code LIKE N''%' + @SearchValue + '%''
-                    OR Stock_Name LIKE N''%' + @SearchValue + '%''
-                    OR Purchase_Date LIKE N''%' + @SearchValue + '%''
-                    OR Purchase_Price LIKE N''%' + @SearchValue + '%''
-                    OR Selling_Price LIKE N''%' + @SearchValue + '%''
-                    OR Quantity LIKE N''%' + @SearchValue + '%''';
+        SET @SQL += N' WHERE Stock_Code LIKE N''%' + @SearchValue + '%'' 
+                     OR Stock_Name LIKE N''%' + @SearchValue + '%'' 
+                     OR Purchase_Price LIKE N''%' + @SearchValue + '%'' 
+                     OR Selling_Price LIKE N''%' + @SearchValue + '%'' 
+                     OR Quantity LIKE N''%' + @SearchValue + '%''';
     END
     
+    -- Group by Stock_Code and Stock_Name
+    SET @SQL += N' GROUP BY Stock_Code, Stock_Name';
+    
+    -- Add sorting functionality
     SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
 
+    -- Execute the dynamically generated SQL
     EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
 END
 GO
@@ -1091,25 +1114,34 @@ GO
 
 CREATE PROCEDURE [dbo].[rptEquipment]
     @SearchValue NVARCHAR(100) = NULL,
-    @SortColumn NVARCHAR(50) = 'Equipment_Id',
+    @SortColumn NVARCHAR(50) = 'Equipment_Code',
     @SortOrder NVARCHAR(4) = 'ASC'
 AS
 BEGIN
     DECLARE @SQL NVARCHAR(MAX);
     
-    SET @SQL = N'SELECT * FROM Equipment';
+    -- Start building the SQL query
+    SET @SQL = N'SELECT Equipment_Code, Name, 
+                        SUM(Quantity) AS Total_Quantity, 
+                        SUM(Quantity_Checked_Out) AS Total_Checked_Out
+                 FROM Equipment';
     
-    IF @SearchValue IS NOT NULL
+    -- Add search functionality if a search value is provided
+    IF @SearchValue IS NOT NULL AND @SearchValue <> ''
     BEGIN
-        SET @SQL += N' WHERE Equipment_Id LIKE N''%' + @SearchValue + '%''
-                    OR Equipment_Code LIKE N''%' + @SearchValue + '%''
-                    OR Name LIKE N''%' + @SearchValue + '%''
-                    OR Quantity LIKE N''%' + @SearchValue + '%''
-                    OR Quantity_Checked_Out LIKE N''%' + @SearchValue + '%''';
+        SET @SQL += N' WHERE Equipment_Code LIKE N''%' + @SearchValue + '%'' 
+                     OR Name LIKE N''%' + @SearchValue + '%'' 
+                     OR Quantity LIKE N''%' + @SearchValue + '%'' 
+                     OR Quantity_Checked_Out LIKE N''%' + @SearchValue + '%''';
     END
     
+    -- Group by Equipment_Code and Name
+    SET @SQL += N' GROUP BY Equipment_Code, Name';
+    
+    -- Add sorting functionality
     SET @SQL += N' ORDER BY ' + QUOTENAME(@SortColumn) + ' ' + @SortOrder;
 
+    -- Execute the dynamically generated SQL
     EXEC sp_executesql @SQL, N'@SearchValue NVARCHAR(100)', @SearchValue;
 END
 GO
