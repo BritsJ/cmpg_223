@@ -36,6 +36,7 @@
             this.cbSort = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbEquipment = new System.Windows.Forms.RadioButton();
             this.rbJobs = new System.Windows.Forms.RadioButton();
             this.rbSales = new System.Windows.Forms.RadioButton();
             this.rbStock = new System.Windows.Forms.RadioButton();
@@ -66,16 +67,19 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 205);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 226);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(674, 270);
+            this.dataGridView1.Size = new System.Drawing.Size(727, 295);
             this.dataGridView1.TabIndex = 3;
             // 
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnReport.Location = new System.Drawing.Point(12, 168);
+            this.btnReport.Location = new System.Drawing.Point(12, 189);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(134, 31);
             this.btnReport.TabIndex = 6;
@@ -87,11 +91,6 @@
             // 
             this.cbSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbSort.FormattingEnabled = true;
-            this.cbSort.Items.AddRange(new object[] {
-            "Alphabetically",
-            "By ID",
-            "Quantity(Ascending)",
-            "Quantity(Descending)"});
             this.cbSort.Location = new System.Drawing.Point(186, 106);
             this.cbSort.Name = "cbSort";
             this.cbSort.Size = new System.Drawing.Size(204, 24);
@@ -110,6 +109,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbEquipment);
             this.groupBox1.Controls.Add(this.rbJobs);
             this.groupBox1.Controls.Add(this.rbSales);
             this.groupBox1.Controls.Add(this.rbStock);
@@ -117,10 +117,23 @@
             this.groupBox1.Controls.Add(this.rbClients);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(168, 150);
+            this.groupBox1.Size = new System.Drawing.Size(168, 171);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show all:";
+            // 
+            // rbEquipment
+            // 
+            this.rbEquipment.AutoSize = true;
+            this.rbEquipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rbEquipment.Location = new System.Drawing.Point(6, 144);
+            this.rbEquipment.Name = "rbEquipment";
+            this.rbEquipment.Size = new System.Drawing.Size(104, 24);
+            this.rbEquipment.TabIndex = 15;
+            this.rbEquipment.TabStop = true;
+            this.rbEquipment.Text = "Equipment";
+            this.rbEquipment.UseVisualStyleBackColor = true;
+            this.rbEquipment.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // rbJobs
             // 
@@ -189,8 +202,9 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnClose.Location = new System.Drawing.Point(552, 481);
+            this.btnClose.Location = new System.Drawing.Point(605, 527);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 31);
             this.btnClose.TabIndex = 9;
@@ -202,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 526);
+            this.ClientSize = new System.Drawing.Size(751, 570);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridView1);
@@ -237,5 +251,6 @@
         private System.Windows.Forms.RadioButton rbStock;
         private System.Windows.Forms.RadioButton rbEmployees;
         private System.Windows.Forms.RadioButton rbClients;
+        private System.Windows.Forms.RadioButton rbEquipment;
     }
 }
