@@ -1,6 +1,6 @@
 ﻿namespace CMPG223_Project
 {
-    partial class frmHelp
+    partial class frmAbout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHelp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
+            this.txtAbout = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // frmHelp
+            // txtAbout
+            // 
+            this.txtAbout.Location = new System.Drawing.Point(12, 12);
+            this.txtAbout.Multiline = true;
+            this.txtAbout.Name = "txtAbout";
+            this.txtAbout.ReadOnly = true;
+            this.txtAbout.Size = new System.Drawing.Size(263, 105);
+            this.txtAbout.TabIndex = 0;
+            // 
+            // frmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(287, 129);
+            this.Controls.Add(this.txtAbout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmHelp";
-            this.Text = "Help";
+            this.Name = "frmAbout";
+            this.Text = "About";
+            this.Load += new System.EventHandler(this.frmAbout_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox txtAbout;
     }
 }

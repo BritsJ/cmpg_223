@@ -194,11 +194,18 @@ namespace CMPG223_Project
             frmSubcategory.Show();
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Popup frmhelp
-            frmHelp frmHelp = new frmHelp();
+            frmAbout frmHelp = new frmAbout();
             frmHelp.ShowDialog();
+        }
+
+        private void documentationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Open documentation on github
+            System.Diagnostics.Process.Start("https://github.com/BritsJ/cmpg_223/blob/main/docs/AFR-Groep-Plagiaatverklaring.pdf");
         }
     }
 }
