@@ -1,3 +1,13 @@
+-- ///
+-- //Group Members	
+-- //Jaco Brits	38980274
+-- //Marcel Volschenk	33451524
+-- //Hendrik Diedericks	45973466
+-- //Karina Visagie	40878554
+-- //Ryno Williamson	47492058
+-- ///
+
+
 USE [koosieSeDatabase]
 GO
 
