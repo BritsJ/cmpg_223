@@ -205,7 +205,7 @@ namespace CMPG223_Project
         private void documentationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Open documentation on github
-            System.Diagnostics.Process.Start("https://github.com/BritsJ/cmpg_223/blob/main/docs/AFR-Groep-Plagiaatverklaring.pdf");
+            System.Diagnostics.Process.Start("https://github.com/BritsJ/cmpg_223/blob/main/docs/HelperFile.pdf");
         }
     }
 }
